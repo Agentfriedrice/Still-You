@@ -1,0 +1,22 @@
+/* Full-viewport stage. Using vw/vh (not %) so the size never depends on a
+   parent-height chain. Phaser appends its canvas directly to <body>. */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  overflow: hidden;
+}
+
+#fullscreen-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 9999;
+
+  font-family: monospace;
+  font-size: 16px;
+  padding: 10px 14px;
+}

@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Still You — Storyboard &amp; Flowchart</title>
+<style>
+  :root {
+    --bg:        #0a0c12;
+    --bg-soft:   #11141c;
+    --text:      #dccfb0;
+    --text-dim:  #9a9384;
+    --muted:     #6e6a5e;
+    --rule:      #2a2820;
+
+    --y1: #6e88c2;  --y1-bg: #0d111c;  --y1-stroke: #1a2848;
+    --y2: #7ab086;  --y2-bg: #0d1810;  --y2-stroke: #1c3624;
+    --y3: #d8a85a;  --y3-bg: #1c1208;  --y3-stroke: #3a2814;
+    --y4: #dccfb0;  --y4-bg: #1c1a14;  --y4-stroke: #3a3630;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Courier New", ui-monospace, monospace;
+    line-height: 1.55;
+  }
+  body {
+    padding: 48px 32px 96px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  header.cover {
+    text-align: center;
+    padding: 56px 0 80px;
+    border-bottom: 1px solid var(--rule);
+  }
+  header.cover h1 {
+    font-size: 44px;
+    letter-spacing: 8px;
+    margin: 0 0 12px;
+    color: var(--text);
+  }
+  header.cover .subtitle {
+    color: var(--text-dim);
+    letter-spacing: 3px;
+    font-size: 13px;
+    text-transform: uppercase;
+  }
+  header.cover blockquote {
+    margin: 32px auto 0;
+    max-width: 580px;
+    color: var(--text-dim);
+    font-style: italic;
+    font-size: 14px;
+    border-left: 2px solid var(--y4);
+    padding-left: 20px;
+    text-align: left;
+  }
+
+  section {
+    margin-top: 64px;
+  }
+  section h2 {
+    font-size: 12px;
+    letter-spacing: 6px;
+    color: var(--y4);
+    text-transform: uppercase;
+    margin: 0 0 6px;
+  }
+  section .sub {
+    color: var(--text-dim);
+    font-size: 13px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 14px;
+  }
+
+  /* Year panels */
+  .year {
+    margin-top: 40px;
+    padding: 28px;
+    border-radius: 6px;
+    border: 1px solid;
+  }
+  .year.y1 { background: var(--y1-bg); border-color: var(--y1-stroke); }
+  .year.y2 { background: var(--y2-bg); border-color: var(--y2-stroke); }
+  .year.y3 { background: var(--y3-bg); border-color: var(--y3-stroke); }
+  .year.y4 { background: var(--y4-bg); border-color: var(--y4-stroke); }
+
+  .year h3 {
+    margin: 0 0 4px;
+    font-size: 22px;
+    letter-spacing: 3px;
+  }
+  .year.y1 h3 { color: var(--y1); }
+  .year.y2 h3 { color: var(--y2); }
+  .year.y3 h3 { color: var(--y3); }
+  .year.y4 h3 { color: var(--y4); }
+
+  .year .tagline {
+    color: var(--text-dim);
+    font-style: italic;
+    font-size: 13px;
+    margin-bottom: 22px;
+  }
+  .year .palette {
+    display: flex;
+    gap: 6px;
+    margin: 14px 0 22px;
+  }
+  .palette .sw {
+    width: 28px;
+    height: 28px;
+    border-radius: 3px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .year .mockup {
+    width: 100%;
+    height: 220px;
+    margin-bottom: 24px;
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    background: #000;
+  }
+
+  .memories {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .memcard {
+    background: rgba(0,0,0,0.35);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: 14px 12px;
+    font-size: 11px;
+  }
+  .memcard .icon {
+    display: block;
+    margin: 0 auto 10px;
+  }
+  .memcard .title {
+    font-weight: bold;
+    color: var(--text);
+    margin-bottom: 8px;
+    font-size: 12px;
+    text-align: center;
+  }
+  .memcard .line {
+    color: var(--text-dim);
+    font-style: italic;
+    font-size: 10.5px;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  .memcard ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 10px;
+  }
+  .memcard li {
+    color: var(--text);
+    padding: 2px 0;
+    border-top: 1px dotted var(--rule);
+  }
+  .memcard li:first-child { border-top: none; }
+
+  .reflections {
+    margin-top: 26px;
+    padding-top: 18px;
+    border-top: 1px solid var(--rule);
+  }
+  .reflections h4 {
+    margin: 0 0 10px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+  .reflections .row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 14px;
+    margin: 6px 0;
+    font-size: 12px;
+  }
+  .reflections .row .tag {
+    color: var(--text-dim);
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+  .reflections .row .body {
+    color: var(--text);
+    white-space: pre-wrap;
+  }
+  .transition {
+    margin-top: 22px;
+    padding: 10px 14px;
+    border-left: 2px solid currentColor;
+    color: inherit;
+    font-size: 12px;
+    font-style: italic;
+    background: rgba(0,0,0,0.35);
+  }
+  .year.y1 .transition { color: var(--y1); }
+  .year.y2 .transition { color: var(--y2); }
+  .year.y3 .transition { color: var(--y3); }
+  .year.y4 .transition { color: var(--y4); }
+
+  .visual-notes {
+    background: rgba(0,0,0,0.45);
+    border: 1px dashed var(--rule);
+    border-radius: 3px;
+    padding: 16px 18px;
+    margin: 22px 0 0;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+  .visual-notes ul { margin: 8px 0 0 18px; padding: 0; }
+  .visual-notes li { padding: 2px 0; }
+
+  .flowchart-wrap {
+    background: var(--bg-soft);
+    padding: 12px;
+    border-radius: 4px;
+    border: 1px solid var(--rule);
+  }
+  .flowchart-wrap svg { display: block; width: 100%; height: auto; }
+
+  footer {
+    margin-top: 80px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: 11px;
+    text-align: center;
+    letter-spacing: 2px;
+  }
+
+  @media (max-width: 900px) {
+    .memories { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <h1>STILL YOU</h1>
+  <div class="subtitle">storyboard &amp; system flowchart · vis 160a</div>
+  <blockquote>
+    An interactive 2D pixel-art web experience where the user walks through a dark, memory-like hallway, 
+    encountering objects from the past, and makes small choices that shape a reflective ending about growth, 
+    regret, care, and identity.
+  </blockquote>
+</header>
+
+<!-- ============================================================ -->
+<!-- Arc -->
+<!-- ============================================================ -->
+<section>
+  <h2>The Arc</h2>
+  <div class="sub">Four hallways, four years. Each one ends in a doorway. 
+    The doorway reflects what the player did and lets them step through to the next.</div>
+
+  <table style="width:100%; font-size:12px; border-collapse: collapse;">
+    <thead style="color: var(--text-dim); text-align:left;">
+      <tr>
+        <th style="padding:6px 8px; border-bottom:1px solid var(--rule);">Year</th>
+        <th style="padding:6px 8px; border-bottom:1px solid var(--rule);">Theme</th>
+        <th style="padding:6px 8px; border-bottom:1px solid var(--rule);">Palette</th>
+        <th style="padding:6px 8px; border-bottom:1px solid var(--rule);">Door opens to</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:8px; color: var(--y1);">Year 1 — Arrival</td>
+        <td style="padding:8px;">What you brought with you</td>
+        <td style="padding:8px;">Cool blue, dim</td>
+        <td style="padding:8px;">Year 2</td>
+      </tr>
+      <tr>
+        <td style="padding:8px; color: var(--y2);">Year 2 — Settling</td>
+        <td style="padding:8px;">What you started keeping</td>
+        <td style="padding:8px;">Dim green</td>
+        <td style="padding:8px;">Year 3</td>
+      </tr>
+      <tr>
+        <td style="padding:8px; color: var(--y3);">Year 3 — Reckoning</td>
+        <td style="padding:8px;">What you weighed yourself against</td>
+        <td style="padding:8px;">Amber</td>
+        <td style="padding:8px;">Year 4</td>
+      </tr>
+      <tr>
+        <td style="padding:8px; color: var(--y4);">Year 4 — Becoming</td>
+        <td style="padding:8px;">What you carry out</td>
+        <td style="padding:8px;">Warm white</td>
+        <td style="padding:8px;">The Finale</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============================================================ -->
+<!-- Visual language -->
+<!-- ============================================================ -->
+<section>
+  <h2>Visual Language</h2>
+  <div class="sub">A 4:3 boxed frame used to invoke a sense of nostalgia. 
+    Side-scrolling hallway with doors along the back wall, floor tiles, 
+    soft overhead lamp pools, drifting dust particles, and a CRT scanline overlay. 
+    These elements allow the experience to feel like an old game cartridge that remembers you.</div>
+
+  <div class="visual-notes">
+    <strong>Common elements (used for every year):</strong>
+    <ul>
+      <li><em>4:3 boxed viewport</em> — containment. Memories arrive framed.</li>
+      <li><em>CRT scanlines</em> + thin vignette frame — nostalgia, an old screen vibe.</li>
+      <li><em>Doors along the back wall</em> — The hallway is somewhere, not nowhere.</li>
+      <li><em>Overhead lamp pools</em> — soft elliptical light. Anchors the player to the architecture.</li>
+      <li><em>Floor tile lines</em> — short stripes at the front edge of the floor; reads as perspective.</li>
+      <li><em>Drifting dust particles</em> — tinted by the year's palette. Slow, ambient motion.</li>
+      <li><em>Memory glows</em> — soft colored ellipse under each interactable. Brightens after a choice.</li>
+      <li><em>"?" → "·"</em> — the hint above each memory swaps to a quiet dot once the player has chosen.</li>
+      <li><em>Doorway threshold</em> — a warm vertical line in a faint frame at the right edge, with a small "step through" hint when ready.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- Year 1 -->
+<!-- ============================================================ -->
+<section>
+  <h2>Year 1 — Arrival</h2>
+  <div class="sub">Cool, dim blue. Memories from the first year — packing for somewhere new, learning to eat alone, remembering who called when you were unsure.</div>
+
+  <div class="year y1">
+    <h3>Year 1 — Arrival</h3>
+    <div class="tagline">"What you brought with you."</div>
+    <div class="palette">
+      <div class="sw" style="background:#070a14"></div>
+      <div class="sw" style="background:#0d111c"></div>
+      <div class="sw" style="background:#1a2438"></div>
+      <div class="sw" style="background:#1a2848"></div>
+      <div class="sw" style="background:#6a88c0"></div>
+      <div class="sw" style="background:#4a6088"></div>
+    </div>
+
+    <svg class="mockup" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid meet">
+      <rect width="800" height="220" fill="#070a14"/>
+      <rect x="0" y="60" width="800" height="120" fill="#0d111c"/>
+      <!-- doors -->
+      <g>
+        <rect x="60"  y="70" width="44" height="50" fill="#0a1224" stroke="#1a3258"/>
+        <rect x="200" y="70" width="44" height="50" fill="#0a1224" stroke="#1a3258"/>
+        <rect x="340" y="70" width="44" height="50" fill="#0a1224" stroke="#1a3258"/>
+        <rect x="480" y="70" width="44" height="50" fill="#0a1224" stroke="#1a3258"/>
+        <rect x="620" y="70" width="44" height="50" fill="#0a1224" stroke="#1a3258"/>
+      </g>
+      <!-- floor strips -->
+      <g opacity="0.5">
+        <rect x="20"  y="174" width="48" height="2" fill="#1a2438"/>
+        <rect x="100" y="174" width="48" height="2" fill="#1a2438"/>
+        <rect x="180" y="174" width="48" height="2" fill="#1a2438"/>
+        <rect x="260" y="174" width="48" height="2" fill="#1a2438"/>
+        <rect x="340" y="174" width="48" height="2" fill="#1a2438"/>
+        <rect x="420" y="174" width="48" height="2" fill="#1a2438"/>
+        <rect x="500" y="174" width="48" height="2" fill="#1a2438"/>
+        <rect x="580" y="174" width="48" height="2" fill="#1a2438"/>
+        <rect x="660" y="174" width="48" height="2" fill="#1a2438"/>
+      </g>
+      <!-- overhead lamp pools -->
+      <g opacity="0.7">
+        <ellipse cx="80"  cy="66" rx="40" ry="6" fill="#4a6088" opacity="0.5"/>
+        <ellipse cx="240" cy="66" rx="40" ry="6" fill="#4a6088" opacity="0.5"/>
+        <ellipse cx="400" cy="66" rx="40" ry="6" fill="#4a6088" opacity="0.5"/>
+        <ellipse cx="560" cy="66" rx="40" ry="6" fill="#4a6088" opacity="0.5"/>
+        <ellipse cx="720" cy="66" rx="40" ry="6" fill="#4a6088" opacity="0.5"/>
+      </g>
+      <!-- memories -->
+      <g>
+        <rect x="135" y="130" width="14" height="12" fill="#a67c52"/>
+        <text x="142" y="118" text-anchor="middle" fill="#fff" font-size="14" font-family="monospace">?</text>
+        <rect x="275" y="130" width="14" height="12" fill="#c8c8c8"/>
+        <text x="282" y="118" text-anchor="middle" fill="#fff" font-size="14" font-family="monospace">?</text>
+        <rect x="415" y="128" width="14" height="14" fill="#e8e6d4"/>
+        <text x="422" y="118" text-anchor="middle" fill="#fff" font-size="14" font-family="monospace">?</text>
+        <rect x="555" y="130" width="14" height="12" fill="#d9a64a"/>
+        <text x="562" y="118" text-anchor="middle" fill="#fff" font-size="14" font-family="monospace">?</text>
+        <rect x="695" y="128" width="14" height="14" fill="#eeb6c4"/>
+        <text x="702" y="118" text-anchor="middle" fill="#fff" font-size="14" font-family="monospace">?</text>
+      </g>
+      <!-- player -->
+      <g>
+        <rect x="22" y="125" width="8" height="6" fill="#2a1a10"/>
+        <rect x="22" y="131" width="8" height="8" fill="#f2d2bd"/>
+        <rect x="21" y="139" width="10" height="9" fill="#6e7e90"/>
+        <rect x="22" y="148" width="3" height="6" fill="#2a3848"/>
+        <rect x="27" y="148" width="3" height="6" fill="#2a3848"/>
+      </g>
+      <!-- doorway threshold -->
+      <rect x="772" y="64" width="2" height="120" fill="#ffe8b0" opacity="0.3"/>
+      <rect x="758" y="60" width="30" height="128" fill="none" stroke="#1a3258"/>
+      <!-- scanlines -->
+      <g opacity="0.25">
+        <line x1="0" y1="20" x2="800" y2="20" stroke="#000"/>
+        <line x1="0" y1="40" x2="800" y2="40" stroke="#000"/>
+        <line x1="0" y1="60" x2="800" y2="60" stroke="#000"/>
+        <line x1="0" y1="80" x2="800" y2="80" stroke="#000"/>
+        <line x1="0" y1="100" x2="800" y2="100" stroke="#000"/>
+        <line x1="0" y1="120" x2="800" y2="120" stroke="#000"/>
+        <line x1="0" y1="140" x2="800" y2="140" stroke="#000"/>
+        <line x1="0" y1="160" x2="800" y2="160" stroke="#000"/>
+        <line x1="0" y1="180" x2="800" y2="180" stroke="#000"/>
+        <line x1="0" y1="200" x2="800" y2="200" stroke="#000"/>
+      </g>
+      <!-- frame -->
+      <rect x="0" y="0" width="800" height="220" fill="none" stroke="#000" stroke-width="4"/>
+    </svg>
+
+    <div class="memories">
+      <div class="memcard">
+        <svg class="icon" width="42" height="36" viewBox="0 0 42 36">
+          <rect x="6" y="8" width="30" height="22" fill="#a67c52"/>
+          <rect x="6" y="18" width="30" height="3" fill="#4a3422"/>
+        </svg>
+        <div class="title">Packed Box</div>
+        <div class="line">You found a box you packed yourself.</div>
+        <ul>
+          <li>keep usable items</li>
+          <li>leave sealed</li>
+          <li>pass forward</li>
+        </ul>
+      </div>
+
+      <div class="memcard">
+        <svg class="icon" width="42" height="36" viewBox="0 0 42 36">
+          <circle cx="14" cy="18" r="7" fill="#c8c8c8"/>
+          <circle cx="14" cy="18" r="3" fill="#101010"/>
+          <rect x="22" y="16" width="14" height="4" fill="#c8c8c8"/>
+          <rect x="32" y="20" width="4" height="4" fill="#c8c8c8"/>
+        </svg>
+        <div class="title">Dorm Key</div>
+        <div class="line">A small metal key. The door is gone.</div>
+        <ul>
+          <li>keep it on your ring</li>
+          <li>bury it in a drawer</li>
+          <li>give it to someone arriving</li>
+        </ul>
+      </div>
+
+      <div class="memcard">
+        <svg class="icon" width="42" height="36" viewBox="0 0 42 36">
+          <rect x="8"  y="6"  width="26" height="24" fill="#e8e6d4"/>
+          <rect x="11" y="12" width="20" height="2" fill="#303030"/>
+          <rect x="11" y="18" width="18" height="2" fill="#303030"/>
+          <rect x="11" y="24" width="14" height="2" fill="#303030"/>
+        </svg>
+        <div class="title">Syllabus</div>
+        <div class="line">Printed and never opened.</div>
+        <ul>
+          <li>read it now</li>
+          <li>recycle it</li>
+          <li>tape it to a wall</li>
+        </ul>
+      </div>
+
+      <div class="memcard">
+        <svg class="icon" width="42" height="36" viewBox="0 0 42 36">
+          <rect x="6"  y="10" width="30" height="20" fill="#d9a64a"/>
+          <circle cx="21" cy="20" r="8" fill="#000" fill-opacity="0.25"/>
+          <circle cx="21" cy="19" r="4" fill="#b8782a"/>
+        </svg>
+        <div class="title">Lonely Meal</div>
+        <div class="line">Food eaten alone, photographed.</div>
+        <ul>
+          <li>treasure it</li>
+          <li>delete it</li>
+          <li>send it to a friend</li>
+        </ul>
+      </div>
+
+      <div class="memcard">
+        <svg class="icon" width="42" height="36" viewBox="0 0 42 36">
+          <rect x="11" y="4"  width="20" height="28" fill="#eeb6c4"/>
+          <rect x="14" y="8"  width="14" height="18" fill="#202028"/>
+          <circle cx="21" cy="6" r="0.8" fill="#ddd"/>
+          <rect x="18" y="29" width="6" height="1" fill="#ddd"/>
+        </svg>
+        <div class="title">First Call</div>
+        <div class="line">A voicemail from the first week.</div>
+        <ul>
+          <li>save forever</li>
+          <li>listen, then let go</li>
+          <li>call them back</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="reflections">
+      <h4>Doorway: Year 1 ends.</h4>
+      <div class="row"><span class="tag">if KEEP</span><span class="body">You held tight to what you carried in.
+That was how you arrived.</span></div>
+      <div class="row"><span class="tag">if LEAVE</span><span class="body">You started setting things down before you needed to.
+That was a quieter kind of brave.</span></div>
+      <div class="row"><span class="tag">if PASS ON</span><span class="body">You handed pieces of the start to other people.
+You were not alone, even then.</span></div>
+      <div class="row"><span class="tag">if MIXED</span><span class="body">You sorted what stayed and what didn't.
+No one taught you how. You did it anyway.</span></div>
+    </div>
+    <div class="transition">Year 2 begins.</div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- Year 2 -->
+<!-- ============================================================ -->
+<section>
+  <h2>Year 2 — Settling</h2>
+  <div class="sub">Dim green. Memories from a year of choosing — declaring a major, leaving messages unread, returning to a notebook (or not).</div>
+
+  <div class="year y2">
+    <h3>Year 2 — Settling</h3>
+    <div class="tagline">"What you started keeping."</div>
+    <div class="palette">
+      <div class="sw" style="background:#07120a"></div>
+      <div class="sw" style="background:#0d1810"></div>
+      <div class="sw" style="background:#182c1f"></div>
+      <div class="sw" style="background:#1c3624"></div>
+      <div class="sw" style="background:#7eb088"></div>
+      <div class="sw" style="background:#4e7058"></div>
+    </div>
+
+    <svg class="mockup" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid meet">
+      <rect width="800" height="220" fill="#07120a"/>
+      <rect x="0" y="60" width="800" height="120" fill="#0d1810"/>
+      <g>
+        <rect x="60"  y="70" width="44" height="50" fill="#0b1a10" stroke="#224a2e"/>
+        <rect x="200" y="70" width="44" height="50" fill="#0b1a10" stroke="#224a2e"/>
+        <rect x="340" y="70" width="44" height="50" fill="#0b1a10" stroke="#224a2e"/>
+        <rect x="480" y="70" width="44" height="50" fill="#0b1a10" stroke="#224a2e"/>
+        <rect x="620" y="70" width="44" height="50" fill="#0b1a10" stroke="#224a2e"/>
+      </g>
+      <g opacity="0.7">
+        <ellipse cx="80"  cy="66" rx="40" ry="6" fill="#4e7058"/>
+        <ellipse cx="240" cy="66" rx="40" ry="6" fill="#4e7058"/>
+        <ellipse cx="400" cy="66" rx="40" ry="6" fill="#4e7058"/>
+        <ellipse cx="560" cy="66" rx="40" ry="6" fill="#4e7058"/>
+        <ellipse cx="720" cy="66" rx="40" ry="6" fill="#4e7058"/>
+      </g>
+      <g>
+        <rect x="135" y="128" width="14" height="14" fill="#b0d68a"/>
+        <text x="142" y="118" text-anchor="middle" fill="#fff" font-size="14" font-family="monospace">?</text>
+        <rect x="275" y="130" width="14" height="12" fill="#a8b8b0"/>
+        <text x="282" y="118" text-anchor="middle" fill="#fff" font-size="14" font-family="monospace">?</text>
+        <rect x="415" y="128" width="14" height="14" fill="#7e62cc"/>
+        <text x="422" y="118" text-anchor="middle" fill="#fff" font-size="14" font-family="monospace">?</text>
+        <rect x="555" y="128" width="14" height="14" fill="#e48a3a"/>
+        <text x="562" y="118" text-anchor="middle" fill="#fff" font-size="14" font-family="monospace">?</text>
+        <rect x="695" y="128" width="14" height="14" fill="#7a513a"/>
+        <text x="702" y="118" text-anchor="middle" fill="#fff" font-size="14" font-family="monospace">?</text>
+      </g>
+      <g>
+        <rect x="22" y="125" width="8" height="6" fill="#2a1a10"/>
+        <rect x="22" y="131" width="8" height="8" fill="#f2d2bd"/>
+        <rect x="21" y="139" width="10" height="9" fill="#6e7e90"/>
+        <rect x="22" y="148" width="3" height="6" fill="#2a3848"/>
+        <rect x="27" y="148" width="3" height="6" fill="#2a3848"/>
+      </g>
+      <rect x="772" y="64" width="2" height="120" fill="#ffe8b0" opacity="0.3"/>
+      <rect x="758" y="60" width="30" height="128" fill="none" stroke="#224a2e"/>
+      <g opacity="0.25">
+        <line x1="0" y1="20" x2="800" y2="20" stroke="#000"/>
+        <line x1="0" y1="40" x2="800" y2="40" stroke="#000"/>
+        <line x1="0" y1="60" x2="800" y2="60" stroke="#000"/>
+        <line x1="0" y1="80" x2="800" y2="80" stroke="#000"/>
+        <line x1="0" y1="100" x2="800" y2="100" stroke="#000"/>
+        <line x1="0" y1="120" x2="800" y2="120" stroke="#000"/>
+        <line x1="0" y1="140" x2="800" y2="140" stroke="#000"/>
+        <line x1="0" y1="160" x2="800" y2="160" stroke="#000"/>
+        <line x1="0" y1="180" x2="800" y2="180" stroke="#000"/>
+        <line x1="0" y1="200" x2="800" y2="200" stroke="#000"/>
+      </g>
+      <rect x="0" y="0" width="800" height="220" fill="none" stroke="#000" stroke-width="4"/>
+    </svg>
+
+    <div class="memories">
+      <div class="memcard"><div class="title">Major Form</div><div class="line">The decision felt enormous.</div><ul><li>I chose well</li><li>I would choose again</li><li>I am still choosing</li></ul></div>
+      <div class="memcard"><div class="title">Unread Message</div><div class="line">A friend wrote you a long message.</div><ul><li>reply now</li><li>re-read it</li><li>send a new one instead</li></ul></div>
+      <div class="memcard"><div class="title">Notebook</div><div class="line">You stopped writing in it a year ago.</div><ul><li>pick it back up</li><li>close it for now</li><li>start a new one</li></ul></div>
+      <div class="memcard"><div class="title">Club Sticker</div><div class="line">You joined for one week.</div><ul><li>try it again</li><li>let one week be enough</li><li>try something new</li></ul></div>
+      <div class="memcard"><div class="title">Coffee Cup</div><div class="line">An empty cup from a 3am.</div><ul><li>it was worth it</li><li>I should have slept</li><li>I will sleep tonight</li></ul></div>
+    </div>
+
+    <div class="reflections">
+      <h4>Doorway: Year 2 ends.</h4>
+      <div class="row"><span class="tag">if KEEP</span><span class="body">You decided what was worth keeping a second year.
+You were starting to know yourself.</span></div>
+      <div class="row"><span class="tag">if LEAVE</span><span class="body">You let some things rest.
+You were still choosing, just more quietly.</span></div>
+      <div class="row"><span class="tag">if PASS ON</span><span class="body">You opened the things you had toward other people.
+Nothing stayed only yours.</span></div>
+      <div class="row"><span class="tag">if MIXED</span><span class="body">You spent the year noticing what you carried.
+Noticing is its own kind of progress.</span></div>
+    </div>
+    <div class="transition">Year 3 begins.</div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- Year 3 -->
+<!-- ============================================================ -->
+<section>
+  <h2>Year 3 — Reckoning</h2>
+  <div class="sub">Amber. Rejection emails, lanyards from places that didn't call back, half-built portfolios. The hardest year, kept warm-toned on purpose — not punishing.</div>
+
+  <div class="year y3">
+    <h3>Year 3 — Reckoning</h3>
+    <div class="tagline">"What you weighed yourself against."</div>
+    <div class="palette">
+      <div class="sw" style="background:#140a05"></div>
+      <div class="sw" style="background:#1c1208"></div>
+      <div class="sw" style="background:#33240f"></div>
+      <div class="sw" style="background:#3a2814"></div>
+      <div class="sw" style="background:#ddb066"></div>
+      <div class="sw" style="background:#8e6628"></div>
+    </div>
+
+    <svg class="mockup" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid meet">
+      <rect width="800" height="220" fill="#140a05"/>
+      <rect x="0" y="60" width="800" height="120" fill="#1c1208"/>
+      <g>
+        <rect x="60"  y="70" width="44" height="50" fill="#180e06" stroke="#4e3415"/>
+        <rect x="200" y="70" width="44" height="50" fill="#180e06" stroke="#4e3415"/>
+        <rect x="340" y="70" width="44" height="50" fill="#180e06" stroke="#4e3415"/>
+        <rect x="480" y="70" width="44" height="50" fill="#180e06" stroke="#4e3415"/>
+        <rect x="620" y="70" width="44" height="50" fill="#180e06" stroke="#4e3415"/>
+      </g>
+      <g opacity="0.7">
+        <ellipse cx="80"  cy="66" rx="40" ry="6" fill="#8e6628"/>
+        <ellipse cx="240" cy="66" rx="40" ry="6" fill="#8e6628"/>
+        <ellipse cx="400" cy="66" rx="40" ry="6" fill="#8e6628"/>
+        <ellipse cx="560" cy="66" rx="40" ry="6" fill="#8e6628"/>
+        <ellipse cx="720" cy="66" rx="40" ry="6" fill="#8e6628"/>
+      </g>
+      <g>
+        <rect x="135" y="130" width="14" height="12" fill="#c24a3e"/>
+        <text x="142" y="118" text-anchor="middle" fill="#fff" font-size="14" font-family="monospace">?</text>
+        <rect x="278" y="124" width="8"  height="18" fill="#6d8aa8"/>
+        <text x="282" y="118" text-anchor="middle" fill="#fff" font-size="14" font-family="monospace">?</text>
+        <rect x="415" y="128" width="14" height="14" fill="#d4a542"/>
+        <text x="422" y="118" text-anchor="middle" fill="#fff" font-size="14" font-family="monospace">?</text>
+        <rect x="553" y="129" width="18" height="13" fill="#4ab9c8"/>
+        <text x="562" y="118" text-anchor="middle" fill="#fff" font-size="14" font-family="monospace">?</text>
+        <rect x="691" y="131" width="18" height="11" fill="#a4a4a0"/>
+        <text x="702" y="118" text-anchor="middle" fill="#fff" font-size="14" font-family="monospace">?</text>
+      </g>
+      <g>
+        <rect x="22" y="125" width="8" height="6" fill="#2a1a10"/>
+        <rect x="22" y="131" width="8" height="8" fill="#f2d2bd"/>
+        <rect x="21" y="139" width="10" height="9" fill="#6e7e90"/>
+        <rect x="22" y="148" width="3" height="6" fill="#2a3848"/>
+        <rect x="27" y="148" width="3" height="6" fill="#2a3848"/>
+      </g>
+      <rect x="772" y="64" width="2" height="120" fill="#ffe8b0" opacity="0.3"/>
+      <rect x="758" y="60" width="30" height="128" fill="none" stroke="#4e3415"/>
+      <g opacity="0.25">
+        <line x1="0" y1="20" x2="800" y2="20" stroke="#000"/>
+        <line x1="0" y1="40" x2="800" y2="40" stroke="#000"/>
+        <line x1="0" y1="60" x2="800" y2="60" stroke="#000"/>
+        <line x1="0" y1="80" x2="800" y2="80" stroke="#000"/>
+        <line x1="0" y1="100" x2="800" y2="100" stroke="#000"/>
+        <line x1="0" y1="120" x2="800" y2="120" stroke="#000"/>
+        <line x1="0" y1="140" x2="800" y2="140" stroke="#000"/>
+        <line x1="0" y1="160" x2="800" y2="160" stroke="#000"/>
+        <line x1="0" y1="180" x2="800" y2="180" stroke="#000"/>
+        <line x1="0" y1="200" x2="800" y2="200" stroke="#000"/>
+      </g>
+      <rect x="0" y="0" width="800" height="220" fill="none" stroke="#000" stroke-width="4"/>
+    </svg>
+
+    <div class="memories">
+      <div class="memcard"><div class="title">Rejection</div><div class="line">"Unfortunately..."</div><ul><li>read it again</li><li>delete it</li><li>reply with kindness</li></ul></div>
+      <div class="memcard"><div class="title">Lanyard</div><div class="line">They never called back.</div><ul><li>keep it</li><li>throw it away</li><li>wear it once more</li></ul></div>
+      <div class="memcard"><div class="title">Portfolio</div><div class="line">Almost-finished work.</div><ul><li>finish it now</li><li>archive it kindly</li><li>start fresh</li></ul></div>
+      <div class="memcard"><div class="title">Group Photo</div><div class="line">A night you skipped.</div><ul><li>reach out</li><li>look away gently</li><li>save it as theirs</li></ul></div>
+      <div class="memcard"><div class="title">Empty Week</div><div class="line">A week of nothing.</div><ul><li>call it rest</li><li>forgive yourself</li><li>note it as data</li></ul></div>
+    </div>
+
+    <div class="reflections">
+      <h4>Doorway: Year 3 ends.</h4>
+      <div class="row"><span class="tag">if KEEP</span><span class="body">You held on through a hard year.
+That is its own kind of strength.</span></div>
+      <div class="row"><span class="tag">if LEAVE</span><span class="body">You let some things go that felt impossible to release.
+It did not make you smaller.</span></div>
+      <div class="row"><span class="tag">if PASS ON</span><span class="body">You handed pieces of the year to other people.
+You did not carry alone.</span></div>
+      <div class="row"><span class="tag">if MIXED</span><span class="body">You weighed things.
+You let weight be a teacher.</span></div>
+    </div>
+    <div class="transition">Year 4 begins.</div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- Year 4 -->
+<!-- ============================================================ -->
+<section>
+  <h2>Year 4 — Becoming</h2>
+  <div class="sub">Warm white. The thesis, the cap, the goodbye note. The final doorway opens to the cumulative ending — it pulls choices from every year.</div>
+
+  <div class="year y4">
+    <h3>Year 4 — Becoming</h3>
+    <div class="tagline">"What you carry out."</div>
+    <div class="palette">
+      <div class="sw" style="background:#12110d"></div>
+      <div class="sw" style="background:#1c1a14"></div>
+      <div class="sw" style="background:#36322a"></div>
+      <div class="sw" style="background:#3a3630"></div>
+      <div class="sw" style="background:#e6dfc6"></div>
+      <div class="sw" style="background:#a49a78"></div>
+    </div>
+
+    <svg class="mockup" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid meet">
+      <rect width="800" height="220" fill="#12110d"/>
+      <rect x="0" y="60" width="800" height="120" fill="#1c1a14"/>
+      <g>
+        <rect x="60"  y="70" width="44" height="50" fill="#18160f" stroke="#4a443a"/>
+        <rect x="200" y="70" width="44" height="50" fill="#18160f" stroke="#4a443a"/>
+        <rect x="340" y="70" width="44" height="50" fill="#18160f" stroke="#4a443a"/>
+        <rect x="480" y="70" width="44" height="50" fill="#18160f" stroke="#4a443a"/>
+        <rect x="620" y="70" width="44" height="50" fill="#18160f" stroke="#4a443a"/>
+      </g>
+      <g opacity="0.7">
+        <ellipse cx="80"  cy="66" rx="40" ry="6" fill="#a49a78"/>
+        <ellipse cx="240" cy="66" rx="40" ry="6" fill="#a49a78"/>
+        <ellipse cx="400" cy="66" rx="40" ry="6" fill="#a49a78"/>
+        <ellipse cx="560" cy="66" rx="40" ry="6" fill="#a49a78"/>
+        <ellipse cx="720" cy="66" rx="40" ry="6" fill="#a49a78"/>
+      </g>
+      <g>
+        <rect x="135" y="126" width="14" height="16" fill="#eed8a8"/>
+        <text x="142" y="118" text-anchor="middle" fill="#fff" font-size="14" font-family="monospace">?</text>
+        <rect x="275" y="129" width="14" height="13" fill="#2c2c2c"/>
+        <text x="282" y="118" text-anchor="middle" fill="#fff" font-size="14" font-family="monospace">?</text>
+        <rect x="415" y="126" width="14" height="16" fill="#a8c8e4"/>
+        <text x="422" y="118" text-anchor="middle" fill="#fff" font-size="14" font-family="monospace">?</text>
+        <rect x="553" y="126" width="18" height="16" fill="#494949"/>
+        <text x="562" y="118" text-anchor="middle" fill="#fff" font-size="14" font-family="monospace">?</text>
+        <rect x="693" y="129" width="14" height="13" fill="#d6c2a8"/>
+        <text x="702" y="118" text-anchor="middle" fill="#fff" font-size="14" font-family="monospace">?</text>
+      </g>
+      <g>
+        <rect x="22" y="125" width="8" height="6" fill="#2a1a10"/>
+        <rect x="22" y="131" width="8" height="8" fill="#f2d2bd"/>
+        <rect x="21" y="139" width="10" height="9" fill="#6e7e90"/>
+        <rect x="22" y="148" width="3" height="6" fill="#2a3848"/>
+        <rect x="27" y="148" width="3" height="6" fill="#2a3848"/>
+      </g>
+      <rect x="772" y="64" width="2" height="120" fill="#ffe8b0" opacity="0.4"/>
+      <rect x="758" y="60" width="30" height="128" fill="none" stroke="#4a443a"/>
+      <g opacity="0.25">
+        <line x1="0" y1="20" x2="800" y2="20" stroke="#000"/>
+        <line x1="0" y1="40" x2="800" y2="40" stroke="#000"/>
+        <line x1="0" y1="60" x2="800" y2="60" stroke="#000"/>
+        <line x1="0" y1="80" x2="800" y2="80" stroke="#000"/>
+        <line x1="0" y1="100" x2="800" y2="100" stroke="#000"/>
+        <line x1="0" y1="120" x2="800" y2="120" stroke="#000"/>
+        <line x1="0" y1="140" x2="800" y2="140" stroke="#000"/>
+        <line x1="0" y1="160" x2="800" y2="160" stroke="#000"/>
+        <line x1="0" y1="180" x2="800" y2="180" stroke="#000"/>
+        <line x1="0" y1="200" x2="800" y2="200" stroke="#000"/>
+      </g>
+      <rect x="0" y="0" width="800" height="220" fill="none" stroke="#000" stroke-width="4"/>
+    </svg>
+
+    <div class="memories">
+      <div class="memcard"><div class="title">Thesis</div><div class="line">Your name at the top.</div><ul><li>send it in</li><li>read it once more</li><li>hold it longer</li></ul></div>
+      <div class="memcard"><div class="title">Cap</div><div class="line">The cap fits.</div><ul><li>wear it proudly</li><li>throw it in the air</li><li>save it for someone after</li></ul></div>
+      <div class="memcard"><div class="title">Goodbye Note</div><div class="line">Ink that feels like memory.</div><ul><li>reply to them</li><li>pin it up</li><li>keep it in a book</li></ul></div>
+      <div class="memcard"><div class="title">Empty Room</div><div class="line">Stripped to the walls.</div><ul><li>take a photo</li><li>sit one last time</li><li>leave the door open</li></ul></div>
+      <div class="memcard"><div class="title">Old Photo</div><div class="line">You, four years ago.</div><ul><li>thank them</li><li>wave goodbye</li><li>tell them it is okay</li></ul></div>
+    </div>
+
+    <div class="reflections">
+      <h4>Final doorway: Year 4 ends. Cumulative reflection from all 4 years.</h4>
+      <div class="row"><span class="tag">mostly KEEP</span><span class="body">You carried more than you thought.</span></div>
+      <div class="row"><span class="tag">mostly LEAVE</span><span class="body">You left some things behind, but not yourself.</span></div>
+      <div class="row"><span class="tag">mostly PASS ON</span><span class="body">You handed pieces of yourself forward. They were received.</span></div>
+      <div class="row"><span class="tag">MIXED</span><span class="body">You are still becoming.</span></div>
+    </div>
+    <div class="transition">You're still you.</div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- Flowchart -->
+<!-- ============================================================ -->
+<section>
+  <h2>System Flowchart</h2>
+  <div class="sub">Per-frame loop on top, dialogue state machine and memory model in the middle, multi-hallway flow at the bottom. The dashed gray arcs represent [Q] backtracking — the player can revise choices and re-trigger the doorway. The dashed white loop is the restart from the final ending back to Year 1.</div>
+
+  <div class="flowchart-wrap">
+    <svg viewBox="0 0 1100 900" preserveAspectRatio="xMidYMid meet" font-family="monospace">
+      <defs>
+        <marker id="sb-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#dccfb0" />
+        </marker>
+        <marker id="sb-arrowDim" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#6e88c2" />
+        </marker>
+      </defs>
+
+      <rect x="0" y="0" width="1100" height="900" fill="#0a0c12" />
+
+      <text x="550" y="38" text-anchor="middle" fill="#dccfb0" font-size="20" font-weight="bold" letter-spacing="2">STILL YOU — SYSTEM FLOWCHART</text>
+      <text x="550" y="60" text-anchor="middle" fill="#888888" font-size="11">input → movement → collision → dialogue → choice → memory → doorway → ending</text>
+
+      <text x="40" y="100" fill="#6e88c2" font-size="11" letter-spacing="2">PER-FRAME GAME LOOP</text>
+      <line x1="40" y1="108" x2="1060" y2="108" stroke="#1a2848" stroke-width="1" />
+
+      <g>
+        <rect x="40"  y="125" width="140" height="60" rx="4" fill="#0d111c" stroke="#6e88c2" stroke-width="1.5"/>
+        <text x="110" y="150" text-anchor="middle" fill="#dccfb0" font-size="12" font-weight="bold">Keyboard Input</text>
+        <text x="110" y="168" text-anchor="middle" fill="#aaaaaa" font-size="10">WASD · E · Q</text>
+
+        <rect x="210" y="125" width="140" height="60" rx="4" fill="#0d111c" stroke="#6e88c2" stroke-width="1.5"/>
+        <text x="280" y="150" text-anchor="middle" fill="#dccfb0" font-size="12" font-weight="bold">Player Movement</text>
+        <text x="280" y="168" text-anchor="middle" fill="#aaaaaa" font-size="10">velocity + clamp</text>
+
+        <rect x="380" y="125" width="140" height="60" rx="4" fill="#0d111c" stroke="#6e88c2" stroke-width="1.5"/>
+        <text x="450" y="150" text-anchor="middle" fill="#dccfb0" font-size="12" font-weight="bold">Proximity Check</text>
+        <text x="450" y="168" text-anchor="middle" fill="#aaaaaa" font-size="10">distance &lt; 55px</text>
+
+        <rect x="550" y="125" width="140" height="60" rx="4" fill="#0d111c" stroke="#6e88c2" stroke-width="1.5"/>
+        <text x="620" y="150" text-anchor="middle" fill="#dccfb0" font-size="12" font-weight="bold">Dialogue Machine</text>
+        <text x="620" y="168" text-anchor="middle" fill="#aaaaaa" font-size="10">initial · prompt · response</text>
+
+        <rect x="720" y="125" width="140" height="60" rx="4" fill="#0d111c" stroke="#6e88c2" stroke-width="1.5"/>
+        <text x="790" y="150" text-anchor="middle" fill="#dccfb0" font-size="12" font-weight="bold">Choice Commit</text>
+        <text x="790" y="168" text-anchor="middle" fill="#aaaaaa" font-size="10">playerChoices[hw][id]</text>
+
+        <rect x="890" y="125" width="170" height="60" rx="4" fill="#0d111c" stroke="#6e88c2" stroke-width="1.5"/>
+        <text x="975" y="150" text-anchor="middle" fill="#dccfb0" font-size="12" font-weight="bold">Doorway Trigger</text>
+        <text x="975" y="168" text-anchor="middle" fill="#aaaaaa" font-size="10">all memories handled?</text>
+
+        <line x1="180" y1="155" x2="210" y2="155" stroke="#6e88c2" stroke-width="1.5" marker-end="url(#sb-arrowDim)" />
+        <line x1="350" y1="155" x2="380" y2="155" stroke="#6e88c2" stroke-width="1.5" marker-end="url(#sb-arrowDim)" />
+        <line x1="520" y1="155" x2="550" y2="155" stroke="#6e88c2" stroke-width="1.5" marker-end="url(#sb-arrowDim)" />
+        <line x1="690" y1="155" x2="720" y2="155" stroke="#6e88c2" stroke-width="1.5" marker-end="url(#sb-arrowDim)" />
+        <line x1="860" y1="155" x2="890" y2="155" stroke="#6e88c2" stroke-width="1.5" marker-end="url(#sb-arrowDim)" />
+      </g>
+
+      <text x="40" y="240" fill="#7ab086" font-size="11" letter-spacing="2">DIALOGUE STATE MACHINE</text>
+      <line x1="40" y1="248" x2="520" y2="248" stroke="#1c3624" stroke-width="1" />
+
+      <g>
+        <rect x="60"  y="280" width="100" height="46" rx="4" fill="#0d1810" stroke="#7ab086" stroke-width="1.5"/>
+        <text x="110" y="302" text-anchor="middle" fill="#dccfb0" font-size="12">closed</text>
+        <text x="110" y="316" text-anchor="middle" fill="#aaaaaa" font-size="9">(idle)</text>
+
+        <rect x="200" y="280" width="100" height="46" rx="4" fill="#0d1810" stroke="#7ab086" stroke-width="1.5"/>
+        <text x="250" y="302" text-anchor="middle" fill="#dccfb0" font-size="12">initial</text>
+        <text x="250" y="316" text-anchor="middle" fill="#aaaaaa" font-size="9">opening lines</text>
+
+        <rect x="340" y="280" width="100" height="46" rx="4" fill="#0d1810" stroke="#7ab086" stroke-width="1.5"/>
+        <text x="390" y="302" text-anchor="middle" fill="#dccfb0" font-size="12">prompt</text>
+        <text x="390" y="316" text-anchor="middle" fill="#aaaaaa" font-size="9">3 choices</text>
+
+        <rect x="480" y="280" width="100" height="46" rx="4" fill="#0d1810" stroke="#7ab086" stroke-width="1.5"/>
+        <text x="530" y="302" text-anchor="middle" fill="#dccfb0" font-size="12">response</text>
+        <text x="530" y="316" text-anchor="middle" fill="#aaaaaa" font-size="9">echo line</text>
+
+        <line x1="160" y1="303" x2="200" y2="303" stroke="#7ab086" stroke-width="1.5" marker-end="url(#sb-arrowDim)" />
+        <text x="180" y="296" text-anchor="middle" fill="#7ab086" font-size="9">E</text>
+
+        <line x1="300" y1="303" x2="340" y2="303" stroke="#7ab086" stroke-width="1.5" marker-end="url(#sb-arrowDim)" />
+        <text x="320" y="296" text-anchor="middle" fill="#7ab086" font-size="9">E</text>
+
+        <line x1="440" y1="303" x2="480" y2="303" stroke="#7ab086" stroke-width="1.5" marker-end="url(#sb-arrowDim)" />
+        <text x="460" y="296" text-anchor="middle" fill="#7ab086" font-size="9">E</text>
+
+        <path d="M 390 280 C 390 250, 400 240, 410 245 C 420 250, 410 270, 400 275" fill="none" stroke="#7ab086" stroke-width="1.5" stroke-dasharray="3,2" />
+        <text x="430" y="252" text-anchor="middle" fill="#7ab086" font-size="9">W/S cursor</text>
+
+        <path d="M 530 326 Q 530 380 110 380 Q 110 360 110 326" fill="none" stroke="#7ab086" stroke-width="1.5" marker-end="url(#sb-arrowDim)" />
+        <text x="320" y="395" text-anchor="middle" fill="#7ab086" font-size="9">E (closes dialogue)</text>
+      </g>
+
+      <text x="600" y="240" fill="#d8a85a" font-size="11" letter-spacing="2">MEMORY MODEL</text>
+      <line x1="600" y1="248" x2="1060" y2="248" stroke="#3a2814" stroke-width="1" />
+
+      <g>
+        <rect x="620" y="280" width="420" height="120" rx="4" fill="#1c1208" stroke="#d8a85a" stroke-width="1.5"/>
+        <text x="830" y="305" text-anchor="middle" fill="#dccfb0" font-size="12" font-weight="bold">memoryDefinitions[year].memories[i]</text>
+
+        <text x="640" y="332" fill="#dccfb0" font-size="11">id, x, y, color, icon</text>
+        <text x="640" y="350" fill="#dccfb0" font-size="11">initial: "you found..."</text>
+        <text x="640" y="368" fill="#dccfb0" font-size="11">prompt:  "what do you do?"</text>
+        <text x="640" y="386" fill="#dccfb0" font-size="11">choices: [ keep · leave · pass_on ]</text>
+
+        <text x="900" y="332" fill="#888888" font-size="10">writes to:</text>
+        <text x="900" y="350" fill="#d8a85a" font-size="11">playerChoices</text>
+        <text x="900" y="368" fill="#d8a85a" font-size="11">  [hallwayId]</text>
+        <text x="900" y="386" fill="#d8a85a" font-size="11">    [memoryId] = choice</text>
+      </g>
+
+      <text x="40" y="460" fill="#dccfb0" font-size="11" letter-spacing="2">MULTI-HALLWAY FLOW</text>
+      <line x1="40" y1="468" x2="1060" y2="468" stroke="#3a3630" stroke-width="1" />
+
+      <g>
+        <rect x="40"  y="500" width="200" height="120" rx="4" fill="#0d111c" stroke="#6e88c2" stroke-width="2"/>
+        <text x="140" y="525" text-anchor="middle" fill="#6e88c2" font-size="13" font-weight="bold">YEAR 1 — Arrival</text>
+        <text x="140" y="546" text-anchor="middle" fill="#aaaaaa" font-size="10">5 memories</text>
+        <text x="140" y="562" text-anchor="middle" fill="#aaaaaa" font-size="10">cool blue</text>
+        <text x="140" y="585" text-anchor="middle" fill="#dccfb0" font-size="10" font-style="italic">"what you brought"</text>
+        <rect x="60"  y="600" width="160" height="12" rx="2" fill="#0a1224" stroke="#1a3258" stroke-width="1"/>
+        <text x="140" y="610" text-anchor="middle" fill="#6e88c2" font-size="9">doorway: year 2 begins</text>
+
+        <rect x="270" y="500" width="200" height="120" rx="4" fill="#0d1810" stroke="#7ab086" stroke-width="2"/>
+        <text x="370" y="525" text-anchor="middle" fill="#7ab086" font-size="13" font-weight="bold">YEAR 2 — Settling</text>
+        <text x="370" y="546" text-anchor="middle" fill="#aaaaaa" font-size="10">5 memories</text>
+        <text x="370" y="562" text-anchor="middle" fill="#aaaaaa" font-size="10">dim green</text>
+        <text x="370" y="585" text-anchor="middle" fill="#dccfb0" font-size="10" font-style="italic">"what you started keeping"</text>
+        <rect x="290" y="600" width="160" height="12" rx="2" fill="#0b1a10" stroke="#224a2e" stroke-width="1"/>
+        <text x="370" y="610" text-anchor="middle" fill="#7ab086" font-size="9">doorway: year 3 begins</text>
+
+        <rect x="500" y="500" width="200" height="120" rx="4" fill="#1c1208" stroke="#d8a85a" stroke-width="2"/>
+        <text x="600" y="525" text-anchor="middle" fill="#d8a85a" font-size="13" font-weight="bold">YEAR 3 — Reckoning</text>
+        <text x="600" y="546" text-anchor="middle" fill="#aaaaaa" font-size="10">5 memories</text>
+        <text x="600" y="562" text-anchor="middle" fill="#aaaaaa" font-size="10">amber</text>
+        <text x="600" y="585" text-anchor="middle" fill="#dccfb0" font-size="10" font-style="italic">"what you weighed"</text>
+        <rect x="520" y="600" width="160" height="12" rx="2" fill="#180e06" stroke="#4e3415" stroke-width="1"/>
+        <text x="600" y="610" text-anchor="middle" fill="#d8a85a" font-size="9">doorway: year 4 begins</text>
+
+        <rect x="730" y="500" width="200" height="120" rx="4" fill="#1c1a14" stroke="#dccfb0" stroke-width="2"/>
+        <text x="830" y="525" text-anchor="middle" fill="#dccfb0" font-size="13" font-weight="bold">YEAR 4 — Becoming</text>
+        <text x="830" y="546" text-anchor="middle" fill="#aaaaaa" font-size="10">5 memories</text>
+        <text x="830" y="562" text-anchor="middle" fill="#aaaaaa" font-size="10">warm white</text>
+        <text x="830" y="585" text-anchor="middle" fill="#dccfb0" font-size="10" font-style="italic">"what you carry out"</text>
+        <rect x="750" y="600" width="160" height="12" rx="2" fill="#18160f" stroke="#4a443a" stroke-width="1"/>
+        <text x="830" y="610" text-anchor="middle" fill="#dccfb0" font-size="9">final doorway</text>
+
+        <rect x="950" y="500" width="100" height="120" rx="4" fill="#000000" stroke="#dccfb0" stroke-width="2"/>
+        <text x="1000" y="540" text-anchor="middle" fill="#dccfb0" font-size="13" font-weight="bold">ENDING</text>
+        <text x="1000" y="568" text-anchor="middle" fill="#aaaaaa" font-size="10" font-style="italic">cumulative</text>
+        <text x="1000" y="582" text-anchor="middle" fill="#aaaaaa" font-size="10" font-style="italic">reflection</text>
+        <text x="1000" y="605" text-anchor="middle" fill="#dccfb0" font-size="11" font-style="italic">"you're still you."</text>
+
+        <line x1="240" y1="560" x2="270" y2="560" stroke="#dccfb0" stroke-width="2" marker-end="url(#sb-arrow)" />
+        <line x1="470" y1="560" x2="500" y2="560" stroke="#dccfb0" stroke-width="2" marker-end="url(#sb-arrow)" />
+        <line x1="700" y1="560" x2="730" y2="560" stroke="#dccfb0" stroke-width="2" marker-end="url(#sb-arrow)" />
+        <line x1="930" y1="560" x2="950" y2="560" stroke="#dccfb0" stroke-width="2" marker-end="url(#sb-arrow)" />
+
+        <text x="255" y="554" text-anchor="middle" fill="#dccfb0" font-size="9">[E]</text>
+        <text x="485" y="554" text-anchor="middle" fill="#dccfb0" font-size="9">[E]</text>
+        <text x="715" y="554" text-anchor="middle" fill="#dccfb0" font-size="9">[E]</text>
+        <text x="940" y="554" text-anchor="middle" fill="#dccfb0" font-size="9">[E]</text>
+
+        <path d="M 280 620 Q 250 660 200 660 Q 150 660 140 622" fill="none" stroke="#888888" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#sb-arrow)" opacity="0.65" />
+        <text x="200" y="675" text-anchor="middle" fill="#888888" font-size="9">[Q] go back · revise choices</text>
+
+        <path d="M 510 620 Q 480 660 430 660 Q 380 660 370 622" fill="none" stroke="#888888" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#sb-arrow)" opacity="0.65" />
+        <path d="M 740 620 Q 710 660 660 660 Q 610 660 600 622" fill="none" stroke="#888888" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#sb-arrow)" opacity="0.65" />
+        <path d="M 960 620 Q 930 660 880 660 Q 840 660 830 622" fill="none" stroke="#888888" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#sb-arrow)" opacity="0.65" />
+
+        <path d="M 1000 620 Q 1000 760 540 760 Q 80 760 80 620" fill="none" stroke="#dccfb0" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#sb-arrow)" />
+        <text x="540" y="775" text-anchor="middle" fill="#dccfb0" font-size="10">[E] on the final doorway · play again, clean slate</text>
+      </g>
+
+      <text x="40" y="810" fill="#dccfb0" font-size="11" letter-spacing="2">DOORWAY LIFECYCLE</text>
+      <line x1="40" y1="818" x2="1060" y2="818" stroke="#3a3630" stroke-width="1" />
+
+      <text x="60"  y="844" fill="#aaaaaa" font-size="11">[1]</text>
+      <text x="90"  y="844" fill="#dccfb0" font-size="11">player enters doorway zone</text>
+
+      <text x="320" y="844" fill="#aaaaaa" font-size="11">[2]</text>
+      <text x="350" y="844" fill="#dccfb0" font-size="11">all memories handled? → overlay fades in</text>
+
+      <text x="60"  y="868" fill="#aaaaaa" font-size="11">[3a]</text>
+      <text x="90"  y="868" fill="#dccfb0" font-size="11">[E] continue → tween out → next hallway</text>
+
+      <text x="330" y="868" fill="#aaaaaa" font-size="11">[3b]</text>
+      <text x="360" y="868" fill="#dccfb0" font-size="11">[Q] go back → tween out → player nudged back into hallway</text>
+
+      <text x="60"  y="888" fill="#aaaaaa" font-size="11">[4]</text>
+      <text x="90"  y="888" fill="#dccfb0" font-size="11">final year: [E] restarts the game (clears playerChoices, reloads Year 1). [Q] spawns in a chair, let the feelings soak in.</text>
+    </svg>
+  </div>
+</section>
+
+<footer>
+  Still You · VIS 160A· Angelo Belardo
+</footer>
+
+</body>
+</html>

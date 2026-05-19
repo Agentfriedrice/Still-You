@@ -1,0 +1,8 @@
+/* No #game-container is used anymore. With no `parent` set in the scale
+   config (js/config.js), Phaser appends its <canvas> straight to <body> and
+   measures the window directly for FIT scaling + CENTER_BOTH centering.
+   This rule just keeps the pixel art crisp and the canvas a block element. */
+canvas {
+  display: block;
+  image-rendering: pixelated;
+}
