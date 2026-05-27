@@ -27,6 +27,12 @@ const hallwayDefinitions = [
       ambient:     0x4a6088,
       labelColor:  "#6e88c2"
     },
+    // Year 1 outfit — the original cool blue/gray the player arrives in.
+    outfit: {
+      torso:  0x6e7e90,
+      collar: 0x445566,
+      legs:   0x2a3848
+    },
     memories: [
       {
         id: "packed_box", x: 350, y: 315, width: 30, height: 26, color: 0xa67c52, icon: "box",
@@ -105,6 +111,12 @@ const hallwayDefinitions = [
       particle:    0x7eb088,
       ambient:     0x4e7058,
       labelColor:  "#7ab086"
+    },
+    // Year 2 outfit — muted green to settle into the green colorwave.
+    outfit: {
+      torso:  0x6d8a72,
+      collar: 0x3a5440,
+      legs:   0x1f2e26
     },
     memories: [
       {
@@ -185,6 +197,12 @@ const hallwayDefinitions = [
       ambient:     0x8e6628,
       labelColor:  "#d8a85a"
     },
+    // Year 3 outfit — warm amber/rust to match the reckoning glow.
+    outfit: {
+      torso:  0xb08862,
+      collar: 0x7a5236,
+      legs:   0x3e2a18
+    },
     memories: [
       {
         id: "rejection", x: 350, y: 315, width: 30, height: 24, color: 0xc24a3e, icon: "envelope",
@@ -240,7 +258,7 @@ const hallwayDefinitions = [
     doorwayReflections: {
       keep:    "You held on through a hard year.\nThat is its own kind of strength.",
       leave:   "You let some things go that felt impossible to release.\nIt did not make you smaller.",
-      pass_on: "You handed pieces of the year to other people.\nYou did not carry alone.",
+      pass_on: "You handed pieces of the year to other people.\nYou did not carry everything alone.",
       mixed:   "You weighed things.\nYou let weight be a teacher."
     },
     transitionLine: "Year 4 begins."
@@ -264,10 +282,16 @@ const hallwayDefinitions = [
       ambient:     0xa49a78,
       labelColor:  "#dccfb0"
     },
+    // Year 4 outfit — warm cream/khaki to match the becoming light.
+    outfit: {
+      torso:  0xcab896,
+      collar: 0x8a7a5a,
+      legs:   0x4a4232
+    },
     memories: [
       {
         id: "thesis", x: 350, y: 315, width: 28, height: 32, color: 0xeed8a8, icon: "stack",
-        initial: "A document with your name at the top.\nIt is almost done.\nIt is enough.",
+        initial: "A document with your name at the top.\nYou're almost done.",
         prompt:  "What do you do with it?",
         choices: [
           { id: "keep",    label: "Send it in",                       response: "You submit it as it is.\nIt was always going to be you." },
@@ -322,6 +346,15 @@ const hallwayDefinitions = [
       leave:   "You left some things behind, but not yourself.",
       pass_on: "You handed pieces of yourself forward. They were received.",
       mixed:   "You are still becoming."
+    },
+    // Cumulative closing lines used only at the very end of Year 4, after the
+    // per-year recap. Distinct from doorwayReflections so the recap and the
+    // closing line never collide on the same string.
+    finalReflections: {
+      keep:    "Four years of holding on, and you are still here.\nThat is what holding on was for.",
+      leave:   "Four years of setting things down, and you are still whole.\nThat is what letting go made room for.",
+      pass_on: "Four years of passing pieces of yourself forward.\nOther people carry the rest now, too.",
+      mixed:   "Four years of sorting through what you would carry.\nYou learned your own weight."
     },
     transitionLine: "You're still you."
   }
@@ -390,6 +423,9 @@ function loadHallway(scene, index) {
       player.body.reset(player.x, player.y);
     }
   }
+
+  // Swap the player's outfit to match this year's colorwave.
+  applyPlayerOutfit(hw);
 }
 
 function destroyHallwayObjects() {

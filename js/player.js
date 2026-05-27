@@ -39,6 +39,19 @@ function createPlayer(scene) {
   player.walkPhase = 0;
 }
 
+// Re-tint the player's torso, collar, and legs to match the hallway's outfit
+// palette. Called by loadHallway() so the player visually shifts to fit each
+// year's colorwave. Hair, skin, and eyes are intentionally left alone — that
+// is the part of the silhouette that stays "you" across the years.
+function applyPlayerOutfit(hw) {
+  if (!player || !player.visuals || !hw || !hw.outfit) return;
+  const v = player.visuals;
+  v.torso.setFillStyle(hw.outfit.torso);
+  v.collar.setFillStyle(hw.outfit.collar);
+  v.leg_l.setFillStyle(hw.outfit.legs);
+  v.leg_r.setFillStyle(hw.outfit.legs);
+}
+
 function createControls(scene) {
   keys = scene.input.keyboard.addKeys({
     up:    Phaser.Input.Keyboard.KeyCodes.W,

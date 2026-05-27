@@ -207,9 +207,13 @@ function buildFinalReflection() {
 
   const dominant = dominantTendency(all);
   const hw4 = hallwayDefinitions[hallwayDefinitions.length - 1];
-  const closing = hw4.doorwayReflections[dominant] || hw4.doorwayReflections.mixed;
+  // Closing line pulls from hw4.finalReflections, NOT doorwayReflections.
+  // doorwayReflections supplies the per-year recap line below; finalReflections
+  // is a separate, cumulative bucket so the two can never print the same copy.
+  const closingBucket = hw4.finalReflections || hw4.doorwayReflections;
+  const closing = closingBucket[dominant] || closingBucket.mixed;
 
-  // Optionally pull a one-line summary per year, so the ending feels woven.
+  // One-line summary per year, so the ending feels woven.
   const yearLines = hallwayDefinitions.map((hw) => {
     const bucket = playerChoices[hw.id] || {};
     const d = dominantTendency(Object.values(bucket));
