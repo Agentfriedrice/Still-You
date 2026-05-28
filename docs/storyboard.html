@@ -117,6 +117,27 @@
     border-radius: 3px;
     border: 1px solid rgba(255,255,255,0.08);
   }
+  .outfit-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: -8px 0 22px;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+  }
+  .outfit-row .label {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 10px;
+  }
+  .outfit-row .sw-small {
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .outfit-row .note { font-style: italic; }
 
   .year .mockup {
     width: 100%;
@@ -328,6 +349,7 @@
       <li><em>Memory glows</em> — soft colored ellipse under each interactable. Brightens after a choice.</li>
       <li><em>"?" → "·"</em> — the hint above each memory swaps to a quiet dot once the player has chosen.</li>
       <li><em>Doorway threshold</em> — a warm vertical line in a faint frame at the right edge, with a small "step through" hint when ready.</li>
+      <li><em>Per-year outfit shift</em> — the player's hair, skin, and eyes stay constant across all four years (that's the "you" that persists). Torso, collar, and legs re-tint each year to sit inside the new colorwave: blue/gray → muted green → amber/rust → warm cream.</li>
     </ul>
   </div>
 </section>
@@ -349,6 +371,13 @@
       <div class="sw" style="background:#1a2848"></div>
       <div class="sw" style="background:#6a88c0"></div>
       <div class="sw" style="background:#4a6088"></div>
+    </div>
+    <div class="outfit-row">
+      <span class="label">Outfit</span>
+      <div class="sw-small" style="background:#6e7e90" title="torso"></div>
+      <div class="sw-small" style="background:#445566" title="collar"></div>
+      <div class="sw-small" style="background:#2a3848" title="legs"></div>
+      <span class="note">blue/gray — the outfit the player arrives in</span>
     </div>
 
     <svg class="mockup" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid meet">
@@ -535,6 +564,13 @@ No one taught you how. You did it anyway.</span></div>
       <div class="sw" style="background:#7eb088"></div>
       <div class="sw" style="background:#4e7058"></div>
     </div>
+    <div class="outfit-row">
+      <span class="label">Outfit</span>
+      <div class="sw-small" style="background:#6d8a72" title="torso"></div>
+      <div class="sw-small" style="background:#3a5440" title="collar"></div>
+      <div class="sw-small" style="background:#1f2e26" title="legs"></div>
+      <span class="note">muted green — settling into the colorwave</span>
+    </div>
 
     <svg class="mockup" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid meet">
       <rect width="800" height="220" fill="#07120a"/>
@@ -568,9 +604,9 @@ No one taught you how. You did it anyway.</span></div>
       <g>
         <rect x="22" y="125" width="8" height="6" fill="#2a1a10"/>
         <rect x="22" y="131" width="8" height="8" fill="#f2d2bd"/>
-        <rect x="21" y="139" width="10" height="9" fill="#6e7e90"/>
-        <rect x="22" y="148" width="3" height="6" fill="#2a3848"/>
-        <rect x="27" y="148" width="3" height="6" fill="#2a3848"/>
+        <rect x="21" y="139" width="10" height="9" fill="#6d8a72"/>
+        <rect x="22" y="148" width="3" height="6" fill="#1f2e26"/>
+        <rect x="27" y="148" width="3" height="6" fill="#1f2e26"/>
       </g>
       <rect x="772" y="64" width="2" height="120" fill="#ffe8b0" opacity="0.3"/>
       <rect x="758" y="60" width="30" height="128" fill="none" stroke="#224a2e"/>
@@ -630,6 +666,13 @@ Noticing is its own kind of progress.</span></div>
       <div class="sw" style="background:#ddb066"></div>
       <div class="sw" style="background:#8e6628"></div>
     </div>
+    <div class="outfit-row">
+      <span class="label">Outfit</span>
+      <div class="sw-small" style="background:#b08862" title="torso"></div>
+      <div class="sw-small" style="background:#7a5236" title="collar"></div>
+      <div class="sw-small" style="background:#3e2a18" title="legs"></div>
+      <span class="note">warm amber/rust — into the reckoning glow</span>
+    </div>
 
     <svg class="mockup" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid meet">
       <rect width="800" height="220" fill="#140a05"/>
@@ -663,9 +706,9 @@ Noticing is its own kind of progress.</span></div>
       <g>
         <rect x="22" y="125" width="8" height="6" fill="#2a1a10"/>
         <rect x="22" y="131" width="8" height="8" fill="#f2d2bd"/>
-        <rect x="21" y="139" width="10" height="9" fill="#6e7e90"/>
-        <rect x="22" y="148" width="3" height="6" fill="#2a3848"/>
-        <rect x="27" y="148" width="3" height="6" fill="#2a3848"/>
+        <rect x="21" y="139" width="10" height="9" fill="#b08862"/>
+        <rect x="22" y="148" width="3" height="6" fill="#3e2a18"/>
+        <rect x="27" y="148" width="3" height="6" fill="#3e2a18"/>
       </g>
       <rect x="772" y="64" width="2" height="120" fill="#ffe8b0" opacity="0.3"/>
       <rect x="758" y="60" width="30" height="128" fill="none" stroke="#4e3415"/>
@@ -725,6 +768,13 @@ You let weight be a teacher.</span></div>
       <div class="sw" style="background:#e6dfc6"></div>
       <div class="sw" style="background:#a49a78"></div>
     </div>
+    <div class="outfit-row">
+      <span class="label">Outfit</span>
+      <div class="sw-small" style="background:#cab896" title="torso"></div>
+      <div class="sw-small" style="background:#8a7a5a" title="collar"></div>
+      <div class="sw-small" style="background:#4a4232" title="legs"></div>
+      <span class="note">warm cream/khaki — dressed in the becoming light</span>
+    </div>
 
     <svg class="mockup" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid meet">
       <rect width="800" height="220" fill="#12110d"/>
@@ -758,9 +808,9 @@ You let weight be a teacher.</span></div>
       <g>
         <rect x="22" y="125" width="8" height="6" fill="#2a1a10"/>
         <rect x="22" y="131" width="8" height="8" fill="#f2d2bd"/>
-        <rect x="21" y="139" width="10" height="9" fill="#6e7e90"/>
-        <rect x="22" y="148" width="3" height="6" fill="#2a3848"/>
-        <rect x="27" y="148" width="3" height="6" fill="#2a3848"/>
+        <rect x="21" y="139" width="10" height="9" fill="#cab896"/>
+        <rect x="22" y="148" width="3" height="6" fill="#4a4232"/>
+        <rect x="27" y="148" width="3" height="6" fill="#4a4232"/>
       </g>
       <rect x="772" y="64" width="2" height="120" fill="#ffe8b0" opacity="0.4"/>
       <rect x="758" y="60" width="30" height="128" fill="none" stroke="#4a443a"/>
@@ -788,11 +838,33 @@ You let weight be a teacher.</span></div>
     </div>
 
     <div class="reflections">
-      <h4>Final doorway: Year 4 ends. Cumulative reflection from all 4 years.</h4>
-      <div class="row"><span class="tag">mostly KEEP</span><span class="body">You carried more than you thought.</span></div>
-      <div class="row"><span class="tag">mostly LEAVE</span><span class="body">You left some things behind, but not yourself.</span></div>
-      <div class="row"><span class="tag">mostly PASS ON</span><span class="body">You handed pieces of yourself forward. They were received.</span></div>
-      <div class="row"><span class="tag">MIXED</span><span class="body">You are still becoming.</span></div>
+      <h4>Final doorway: Year 4 recap line</h4>
+      <div class="row"><span class="tag">if KEEP</span><span class="body">You carried more than you thought.</span></div>
+      <div class="row"><span class="tag">if LEAVE</span><span class="body">You left some things behind, but not yourself.</span></div>
+      <div class="row"><span class="tag">if PASS ON</span><span class="body">You handed pieces of yourself forward. They were received.</span></div>
+      <div class="row"><span class="tag">if MIXED</span><span class="body">You are still becoming.</span></div>
+    </div>
+
+    <div class="reflections">
+      <h4>Cumulative closing — across all 4 years</h4>
+      <div class="row"><span class="tag">mostly KEEP</span><span class="body">Four years of holding on, and you are still here.
+That is what holding on was for.</span></div>
+      <div class="row"><span class="tag">mostly LEAVE</span><span class="body">Four years of setting things down, and you are still whole.
+That is what letting go made room for.</span></div>
+      <div class="row"><span class="tag">mostly PASS ON</span><span class="body">Four years of passing pieces of yourself forward.
+Other people carry the rest now, too.</span></div>
+      <div class="row"><span class="tag">MIXED</span><span class="body">Four years of sorting through what you would carry.
+You learned your own weight.</span></div>
+    </div>
+
+    <div class="visual-notes" style="margin-top:18px;">
+      <strong>Final reflection structure:</strong>
+      <ul>
+        <li>"You walked four hallways."</li>
+        <li>Recap line per year (1 → 2 → 3 → 4), each pulled from that year's <code>doorwayReflections</code> by dominant tendency.</li>
+        <li>Cumulative closing line, pulled from Year 4's <code>finalReflections</code> by the dominant tendency across <em>all</em> choices — never overlaps the per-year recap because it lives in its own bucket.</li>
+        <li>Final whisper: <em>"You're still you."</em></li>
+      </ul>
     </div>
     <div class="transition">You're still you.</div>
   </div>
@@ -803,7 +875,7 @@ You let weight be a teacher.</span></div>
 <!-- ============================================================ -->
 <section>
   <h2>System Flowchart</h2>
-  <div class="sub">Per-frame loop on top, dialogue state machine and memory model in the middle, multi-hallway flow at the bottom. The dashed gray arcs represent [Q] backtracking — the player can revise choices and re-trigger the doorway. The dashed white loop is the restart from the final ending back to Year 1.</div>
+  <div class="sub">Per-frame loop on top, dialogue state machine and memory model in the middle, multi-hallway flow at the bottom. Each year box also lists the world palette and the matching outfit re-tint applied to the player. The ENDING node is now two-stage: a per-year recap line drawn from each year's <code>doorwayReflections</code>, then a cumulative closing line drawn from Year 4's separate <code>finalReflections</code> bucket. The dashed gray arcs represent [Q] backtracking — the player can revise choices and re-trigger the doorway. The dashed white loop is the restart from the final ending back to Year 1.</div>
 
   <div class="flowchart-wrap">
     <svg viewBox="0 0 1100 900" preserveAspectRatio="xMidYMid meet" font-family="monospace">
@@ -915,42 +987,48 @@ You let weight be a teacher.</span></div>
 
       <g>
         <rect x="40"  y="500" width="200" height="120" rx="4" fill="#0d111c" stroke="#6e88c2" stroke-width="2"/>
-        <text x="140" y="525" text-anchor="middle" fill="#6e88c2" font-size="13" font-weight="bold">YEAR 1 — Arrival</text>
-        <text x="140" y="546" text-anchor="middle" fill="#aaaaaa" font-size="10">5 memories</text>
-        <text x="140" y="562" text-anchor="middle" fill="#aaaaaa" font-size="10">cool blue</text>
-        <text x="140" y="585" text-anchor="middle" fill="#dccfb0" font-size="10" font-style="italic">"what you brought"</text>
+        <text x="140" y="523" text-anchor="middle" fill="#6e88c2" font-size="13" font-weight="bold">YEAR 1 — Arrival</text>
+        <text x="140" y="542" text-anchor="middle" fill="#aaaaaa" font-size="10">5 memories</text>
+        <text x="140" y="556" text-anchor="middle" fill="#aaaaaa" font-size="10">world: cool blue</text>
+        <text x="140" y="570" text-anchor="middle" fill="#aaaaaa" font-size="10">outfit: blue/gray</text>
+        <text x="140" y="588" text-anchor="middle" fill="#dccfb0" font-size="10" font-style="italic">"what you brought"</text>
         <rect x="60"  y="600" width="160" height="12" rx="2" fill="#0a1224" stroke="#1a3258" stroke-width="1"/>
         <text x="140" y="610" text-anchor="middle" fill="#6e88c2" font-size="9">doorway: year 2 begins</text>
 
         <rect x="270" y="500" width="200" height="120" rx="4" fill="#0d1810" stroke="#7ab086" stroke-width="2"/>
-        <text x="370" y="525" text-anchor="middle" fill="#7ab086" font-size="13" font-weight="bold">YEAR 2 — Settling</text>
-        <text x="370" y="546" text-anchor="middle" fill="#aaaaaa" font-size="10">5 memories</text>
-        <text x="370" y="562" text-anchor="middle" fill="#aaaaaa" font-size="10">dim green</text>
-        <text x="370" y="585" text-anchor="middle" fill="#dccfb0" font-size="10" font-style="italic">"what you started keeping"</text>
+        <text x="370" y="523" text-anchor="middle" fill="#7ab086" font-size="13" font-weight="bold">YEAR 2 — Settling</text>
+        <text x="370" y="542" text-anchor="middle" fill="#aaaaaa" font-size="10">5 memories</text>
+        <text x="370" y="556" text-anchor="middle" fill="#aaaaaa" font-size="10">world: dim green</text>
+        <text x="370" y="570" text-anchor="middle" fill="#aaaaaa" font-size="10">outfit: muted green</text>
+        <text x="370" y="588" text-anchor="middle" fill="#dccfb0" font-size="10" font-style="italic">"what you started keeping"</text>
         <rect x="290" y="600" width="160" height="12" rx="2" fill="#0b1a10" stroke="#224a2e" stroke-width="1"/>
         <text x="370" y="610" text-anchor="middle" fill="#7ab086" font-size="9">doorway: year 3 begins</text>
 
         <rect x="500" y="500" width="200" height="120" rx="4" fill="#1c1208" stroke="#d8a85a" stroke-width="2"/>
-        <text x="600" y="525" text-anchor="middle" fill="#d8a85a" font-size="13" font-weight="bold">YEAR 3 — Reckoning</text>
-        <text x="600" y="546" text-anchor="middle" fill="#aaaaaa" font-size="10">5 memories</text>
-        <text x="600" y="562" text-anchor="middle" fill="#aaaaaa" font-size="10">amber</text>
-        <text x="600" y="585" text-anchor="middle" fill="#dccfb0" font-size="10" font-style="italic">"what you weighed"</text>
+        <text x="600" y="523" text-anchor="middle" fill="#d8a85a" font-size="13" font-weight="bold">YEAR 3 — Reckoning</text>
+        <text x="600" y="542" text-anchor="middle" fill="#aaaaaa" font-size="10">5 memories</text>
+        <text x="600" y="556" text-anchor="middle" fill="#aaaaaa" font-size="10">world: amber</text>
+        <text x="600" y="570" text-anchor="middle" fill="#aaaaaa" font-size="10">outfit: amber/rust</text>
+        <text x="600" y="588" text-anchor="middle" fill="#dccfb0" font-size="10" font-style="italic">"what you weighed"</text>
         <rect x="520" y="600" width="160" height="12" rx="2" fill="#180e06" stroke="#4e3415" stroke-width="1"/>
         <text x="600" y="610" text-anchor="middle" fill="#d8a85a" font-size="9">doorway: year 4 begins</text>
 
         <rect x="730" y="500" width="200" height="120" rx="4" fill="#1c1a14" stroke="#dccfb0" stroke-width="2"/>
-        <text x="830" y="525" text-anchor="middle" fill="#dccfb0" font-size="13" font-weight="bold">YEAR 4 — Becoming</text>
-        <text x="830" y="546" text-anchor="middle" fill="#aaaaaa" font-size="10">5 memories</text>
-        <text x="830" y="562" text-anchor="middle" fill="#aaaaaa" font-size="10">warm white</text>
-        <text x="830" y="585" text-anchor="middle" fill="#dccfb0" font-size="10" font-style="italic">"what you carry out"</text>
+        <text x="830" y="523" text-anchor="middle" fill="#dccfb0" font-size="13" font-weight="bold">YEAR 4 — Becoming</text>
+        <text x="830" y="542" text-anchor="middle" fill="#aaaaaa" font-size="10">5 memories</text>
+        <text x="830" y="556" text-anchor="middle" fill="#aaaaaa" font-size="10">world: warm white</text>
+        <text x="830" y="570" text-anchor="middle" fill="#aaaaaa" font-size="10">outfit: cream/khaki</text>
+        <text x="830" y="588" text-anchor="middle" fill="#dccfb0" font-size="10" font-style="italic">"what you carry out"</text>
         <rect x="750" y="600" width="160" height="12" rx="2" fill="#18160f" stroke="#4a443a" stroke-width="1"/>
         <text x="830" y="610" text-anchor="middle" fill="#dccfb0" font-size="9">final doorway</text>
 
         <rect x="950" y="500" width="100" height="120" rx="4" fill="#000000" stroke="#dccfb0" stroke-width="2"/>
-        <text x="1000" y="540" text-anchor="middle" fill="#dccfb0" font-size="13" font-weight="bold">ENDING</text>
-        <text x="1000" y="568" text-anchor="middle" fill="#aaaaaa" font-size="10" font-style="italic">cumulative</text>
-        <text x="1000" y="582" text-anchor="middle" fill="#aaaaaa" font-size="10" font-style="italic">reflection</text>
-        <text x="1000" y="605" text-anchor="middle" fill="#dccfb0" font-size="11" font-style="italic">"you're still you."</text>
+        <text x="1000" y="528" text-anchor="middle" fill="#dccfb0" font-size="12" font-weight="bold">ENDING</text>
+        <text x="1000" y="552" text-anchor="middle" fill="#aaaaaa" font-size="9">(1) recap × 4</text>
+        <text x="1000" y="566" text-anchor="middle" fill="#aaaaaa" font-size="9">per-year line</text>
+        <text x="1000" y="584" text-anchor="middle" fill="#aaaaaa" font-size="9">(2) cumulative</text>
+        <text x="1000" y="598" text-anchor="middle" fill="#aaaaaa" font-size="9">closing line</text>
+        <text x="1000" y="614" text-anchor="middle" fill="#dccfb0" font-size="10" font-style="italic">"you're still you."</text>
 
         <line x1="240" y1="560" x2="270" y2="560" stroke="#dccfb0" stroke-width="2" marker-end="url(#sb-arrow)" />
         <line x1="470" y1="560" x2="500" y2="560" stroke="#dccfb0" stroke-width="2" marker-end="url(#sb-arrow)" />

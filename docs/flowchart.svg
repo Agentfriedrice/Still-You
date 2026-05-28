@@ -127,46 +127,52 @@
 
   <!-- Year 1 -->
   <rect x="40"  y="500" width="200" height="120" rx="4" fill="#0d111c" stroke="#6e88c2" stroke-width="2"/>
-  <text x="140" y="525" text-anchor="middle" fill="#6e88c2" font-size="13" font-weight="bold">YEAR 1 — Arrival</text>
-  <text x="140" y="546" text-anchor="middle" fill="#aaaaaa" font-size="10">5 memories</text>
-  <text x="140" y="562" text-anchor="middle" fill="#aaaaaa" font-size="10">cool blue</text>
-  <text x="140" y="585" text-anchor="middle" fill="#dccfb0" font-size="10" font-style="italic">"what you brought"</text>
+  <text x="140" y="523" text-anchor="middle" fill="#6e88c2" font-size="13" font-weight="bold">YEAR 1 — Arrival</text>
+  <text x="140" y="542" text-anchor="middle" fill="#aaaaaa" font-size="10">5 memories</text>
+  <text x="140" y="556" text-anchor="middle" fill="#aaaaaa" font-size="10">world: cool blue</text>
+  <text x="140" y="570" text-anchor="middle" fill="#aaaaaa" font-size="10">outfit: blue/gray</text>
+  <text x="140" y="588" text-anchor="middle" fill="#dccfb0" font-size="10" font-style="italic">"what you brought"</text>
   <rect x="60"  y="600" width="160" height="12" rx="2" fill="#0a1224" stroke="#1a3258" stroke-width="1"/>
   <text x="140" y="610" text-anchor="middle" fill="#6e88c2" font-size="9">doorway: year 2 begins</text>
 
   <!-- Year 2 -->
   <rect x="270" y="500" width="200" height="120" rx="4" fill="#0d1810" stroke="#7ab086" stroke-width="2"/>
-  <text x="370" y="525" text-anchor="middle" fill="#7ab086" font-size="13" font-weight="bold">YEAR 2 — Settling</text>
-  <text x="370" y="546" text-anchor="middle" fill="#aaaaaa" font-size="10">5 memories</text>
-  <text x="370" y="562" text-anchor="middle" fill="#aaaaaa" font-size="10">dim green</text>
-  <text x="370" y="585" text-anchor="middle" fill="#dccfb0" font-size="10" font-style="italic">"what you started keeping"</text>
+  <text x="370" y="523" text-anchor="middle" fill="#7ab086" font-size="13" font-weight="bold">YEAR 2 — Settling</text>
+  <text x="370" y="542" text-anchor="middle" fill="#aaaaaa" font-size="10">5 memories</text>
+  <text x="370" y="556" text-anchor="middle" fill="#aaaaaa" font-size="10">world: dim green</text>
+  <text x="370" y="570" text-anchor="middle" fill="#aaaaaa" font-size="10">outfit: muted green</text>
+  <text x="370" y="588" text-anchor="middle" fill="#dccfb0" font-size="10" font-style="italic">"what you started keeping"</text>
   <rect x="290" y="600" width="160" height="12" rx="2" fill="#0b1a10" stroke="#224a2e" stroke-width="1"/>
   <text x="370" y="610" text-anchor="middle" fill="#7ab086" font-size="9">doorway: year 3 begins</text>
 
   <!-- Year 3 -->
   <rect x="500" y="500" width="200" height="120" rx="4" fill="#1c1208" stroke="#d8a85a" stroke-width="2"/>
-  <text x="600" y="525" text-anchor="middle" fill="#d8a85a" font-size="13" font-weight="bold">YEAR 3 — Reckoning</text>
-  <text x="600" y="546" text-anchor="middle" fill="#aaaaaa" font-size="10">5 memories</text>
-  <text x="600" y="562" text-anchor="middle" fill="#aaaaaa" font-size="10">amber</text>
-  <text x="600" y="585" text-anchor="middle" fill="#dccfb0" font-size="10" font-style="italic">"what you weighed"</text>
+  <text x="600" y="523" text-anchor="middle" fill="#d8a85a" font-size="13" font-weight="bold">YEAR 3 — Reckoning</text>
+  <text x="600" y="542" text-anchor="middle" fill="#aaaaaa" font-size="10">5 memories</text>
+  <text x="600" y="556" text-anchor="middle" fill="#aaaaaa" font-size="10">world: amber</text>
+  <text x="600" y="570" text-anchor="middle" fill="#aaaaaa" font-size="10">outfit: amber/rust</text>
+  <text x="600" y="588" text-anchor="middle" fill="#dccfb0" font-size="10" font-style="italic">"what you weighed"</text>
   <rect x="520" y="600" width="160" height="12" rx="2" fill="#180e06" stroke="#4e3415" stroke-width="1"/>
   <text x="600" y="610" text-anchor="middle" fill="#d8a85a" font-size="9">doorway: year 4 begins</text>
 
   <!-- Year 4 -->
   <rect x="730" y="500" width="200" height="120" rx="4" fill="#1c1a14" stroke="#dccfb0" stroke-width="2"/>
-  <text x="830" y="525" text-anchor="middle" fill="#dccfb0" font-size="13" font-weight="bold">YEAR 4 — Becoming</text>
-  <text x="830" y="546" text-anchor="middle" fill="#aaaaaa" font-size="10">5 memories</text>
-  <text x="830" y="562" text-anchor="middle" fill="#aaaaaa" font-size="10">warm white</text>
-  <text x="830" y="585" text-anchor="middle" fill="#dccfb0" font-size="10" font-style="italic">"what you carry out"</text>
+  <text x="830" y="523" text-anchor="middle" fill="#dccfb0" font-size="13" font-weight="bold">YEAR 4 — Becoming</text>
+  <text x="830" y="542" text-anchor="middle" fill="#aaaaaa" font-size="10">5 memories</text>
+  <text x="830" y="556" text-anchor="middle" fill="#aaaaaa" font-size="10">world: warm white</text>
+  <text x="830" y="570" text-anchor="middle" fill="#aaaaaa" font-size="10">outfit: cream/khaki</text>
+  <text x="830" y="588" text-anchor="middle" fill="#dccfb0" font-size="10" font-style="italic">"what you carry out"</text>
   <rect x="750" y="600" width="160" height="12" rx="2" fill="#18160f" stroke="#4a443a" stroke-width="1"/>
   <text x="830" y="610" text-anchor="middle" fill="#dccfb0" font-size="9">final doorway</text>
 
   <!-- Final ending -->
   <rect x="950" y="500" width="100" height="120" rx="4" fill="#000000" stroke="#dccfb0" stroke-width="2"/>
-  <text x="1000" y="540" text-anchor="middle" fill="#dccfb0" font-size="13" font-weight="bold">ENDING</text>
-  <text x="1000" y="568" text-anchor="middle" fill="#aaaaaa" font-size="10" font-style="italic">cumulative</text>
-  <text x="1000" y="582" text-anchor="middle" fill="#aaaaaa" font-size="10" font-style="italic">reflection</text>
-  <text x="1000" y="605" text-anchor="middle" fill="#dccfb0" font-size="11" font-style="italic">"you're still you."</text>
+  <text x="1000" y="528" text-anchor="middle" fill="#dccfb0" font-size="12" font-weight="bold">ENDING</text>
+  <text x="1000" y="552" text-anchor="middle" fill="#aaaaaa" font-size="9">(1) recap × 4</text>
+  <text x="1000" y="566" text-anchor="middle" fill="#aaaaaa" font-size="9">per-year line</text>
+  <text x="1000" y="584" text-anchor="middle" fill="#aaaaaa" font-size="9">(2) cumulative</text>
+  <text x="1000" y="598" text-anchor="middle" fill="#aaaaaa" font-size="9">closing line</text>
+  <text x="1000" y="614" text-anchor="middle" fill="#dccfb0" font-size="10" font-style="italic">"you're still you."</text>
 
   <!-- Arrows between years -->
   <line x1="240" y1="560" x2="270" y2="560" stroke="#dccfb0" stroke-width="2" marker-end="url(#arrow)" />

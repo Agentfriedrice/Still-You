@@ -27,7 +27,7 @@ const hallwayDefinitions = [
       ambient:     0x4a6088,
       labelColor:  "#6e88c2"
     },
-    // Year 1 outfit — the original cool blue/gray the player arrives in.
+    // Year 1 outfit — cool blue/gray outfit the player arrives in.
     outfit: {
       torso:  0x6e7e90,
       collar: 0x445566,
