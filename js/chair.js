@@ -125,7 +125,7 @@ function illuminateRoom(scene) {
   if (roomIlluminated) return;
   roomIlluminated = true;
 
-  const FADE = 15000; // ~15-second gentle reveal
+  const FADE = 20000; // ~15-second gentle reveal
   const lit = [];
 
   // --- Yellow -> orange gradient over the whole hallway interior. ---
