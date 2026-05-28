@@ -19,7 +19,8 @@ function createDoorway(scene, hallway) {
   currentHallwayObjects.push(beam);
 
   // Frame around the threshold so it reads as a doorway, not a stray line.
-  const frame = scene.add.rectangle(zoneX, zoneY, 30, hallwayBottom - hallwayTop - 30, 0x000000, 0);
+  const frameHeight = hallwayBottom - hallwayTop - 30;
+  const frame = scene.add.rectangle(zoneX, zoneY, 30, frameHeight, 0x000000, 0);
   frame.setStrokeStyle(2, p.doorStroke);
   frame.setDepth(-4);
   currentHallwayObjects.push(frame);
@@ -35,7 +36,20 @@ function createDoorway(scene, hallway) {
   hintText.setDepth(-3);
   currentHallwayObjects.push(hintText);
 
-  endingZone = { x: zoneX, y: zoneY, radius: 32, hintText };
+  // Trigger zone: a vertical SLAB matching the doorway's frame, not a circle.
+  // halfWidth controls how close the player has to stand to the threshold,
+  // halfHeight uses the doorway frame's actual vertical extent so the player
+  // can step through at any height — they shouldn't have to walk up off the
+  // floor to enter the trigger. radius is kept for backward compatibility
+  // with any other code that may read endingZone.
+  endingZone = {
+    x: zoneX,
+    y: zoneY,
+    radius: 32,
+    halfWidth: 32,
+    halfHeight: frameHeight / 2,
+    hintText
+  };
 }
 
 // Called from the scene update. Decides whether to show the doorway overlay.
@@ -57,12 +71,17 @@ function updateDoorwayTrigger(scene) {
     }
   }
 
-  const distance = Phaser.Math.Distance.Between(
-    player.x, player.y,
-    endingZone.x, endingZone.y
-  );
+  // Rectangular slab check rather than a circle, so the player can step
+  // through at any height inside the doorway frame — including their normal
+  // walking height along the floor, which falls well below the zone's
+  // vertical center.
+  const dx = Math.abs(player.x - endingZone.x);
+  const dy = Math.abs(player.y - endingZone.y);
+  const insideSlab =
+    dx < endingZone.halfWidth &&
+    dy < endingZone.halfHeight;
 
-  if (distance < endingZone.radius && allMemoriesHandled()) {
+  if (insideSlab && allMemoriesHandled()) {
     showDoorway(scene);
   }
 }

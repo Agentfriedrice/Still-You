@@ -30,7 +30,7 @@ config -> state -> hallways -> visuals -> dialogue -> interactables -> ending ->
 - **`config.js`** — `gameWidth/Height`, `worldWidth/Height`, the hallway band coordinates, and the Phaser config. The world is `1800 × 480`; the viewport is `640 × 480` (4:3) for the boxed-memory feeling.
 - **`state.js`** — shared globals. Includes the multi-hallway state (`currentHallwayIndex`, `currentHallwayObjects`), the doorway state (`doorwayActive`, `isTransitioning`), nested choice tracking (`playerChoices[hallwayId][memoryId] = choiceId`), and references to every UI piece.
 - **`hallways.js`** *(new)* — all four years as data: palette, memory list, per-year doorway reflection variants, transition line. Also owns the lifecycle functions `loadHallway`, `transitionToNextHallway`, `restartGame`, and `destroyHallwayObjects`.
-- **`visuals.js`** *(new)* — hallway atmosphere: sky/ceiling band, floor band, doors along the back wall, lintels, tile strips, overhead lamp pools, drifting dust particles. Plus one-time HUD effects: CRT scanlines and a vignette frame.
+- **`visuals.js`** *(new)* — hallway atmosphere: sky/ceiling band, floor band, windows along the back wall (framed glass with a cross mullion + sill + soft light spill below), tile strips, overhead lamp pools, drifting dust particles. Plus one-time HUD effects: CRT scanlines and a vignette frame.
 - **`dialogue.js`** — the three-state dialogue machine (`initial → prompt → response → closed`), with cursor restoration on re-open so the player can revise.
 - **`interactables.js`** — builds each memory: base rectangle (physics body + highlight target) plus a small composite "icon" drawn on top so each memory reads as a recognizable object (box, key, paper, plate, phone, cup, envelope, lanyard, folder, photo, week-grid, page-stack, cap, doorway). Maintains the `?` → `·` hint swap and the brightening floor glow.
 - **`ending.js`** — the doorway system at each hallway's right edge. Shows a year-end reflection built from that year's choices, with `[E]` to advance and `[Q]` to back out and revise. On the final year, the same overlay shows a cumulative reflection drawn from all four years, and `[E]` restarts the game.
@@ -132,7 +132,7 @@ The hallway was previously a single dark band with three colored squares. It is 
 
 - **Sky / ceiling band** above the hallway, tinted per year.
 - **Hallway floor band** in the year's primary color.
-- **Doors along the back wall** every `220px`, each with a small lintel above and a faint floor mark in front. The hallway reads as somewhere — a place with architecture — instead of a blank corridor.
+- **Windows along the back wall** every `230px`, each a framed pane with a cross mullion and a sill, plus a faint wash of the year's ambient light over the glass and a soft pool of light spilling down the wall below. The hallway reads as somewhere — a place with architecture — instead of a blank corridor. Window x-centres are also remembered in `windowPositions` so the Year 4 "stay a while" sun-ray effect knows where to anchor the rays.
 - **Floor tile lines** every `64px` along the front edge of the floor band, suggesting tile seams in perspective.
 - **Wall baseline and floor edge** — thin horizontal strokes that anchor the band visually.
 - **Overhead lamp pools** every `220px` — a soft elliptical light at the top of the band and a wider, dimmer pool below, suggesting ceiling lamps. The hallway is lit, not just colored.
@@ -197,7 +197,7 @@ Both docs were designed for VIS 160A presentation use — same monospace font an
 - **Sound.** Even one quiet looped ambient drone per year would change the feeling dramatically. Your notes flag "sound / silence" as an output channel — currently the project has no audio.
 - **`localStorage` persistence.** Right now refreshing the page resets all choices. Saving `playerChoices` would let the player return to a hallway that remembers them. Pick this one carefully — sometimes resetting *is* the artistically right move.
 - **Typewriter text effect.** A per-character reveal on `renderDialogue` would slow the player further. Easy with a Phaser timer.
-- **Wall art / posters.** The back wall currently has doors. A handful of small posters or window frames here and there would add texture per year (e.g., Year 1: orientation flyers; Year 4: graduation announcements).
+- **Wall art / posters.** The back wall currently has windows. A handful of small posters or framed prints *between* the windows would add texture per year (e.g., Year 1: orientation flyers; Year 4: graduation announcements).
 
 ---
 
@@ -221,7 +221,7 @@ Both docs were designed for VIS 160A presentation use — same monospace font an
 ### Visual / interaction design
 
 - **"Aspect ratio: 4:3 used for this game in order to invoke a feeling of nostalgia, compared to a more cinematic approach of the 16:9 aspect ratio."** Preserved. Reinforced now by CRT scanlines and a vignette frame.
-- **"8 bit (to fit an RPG like game, mainly aesthetic)."** Composite-rectangle pixel sprites + monospace text + scanlines + repeated doors + tile lines. Stops short of full pixel art but reads as the same genre.
+- **"8 bit (to fit an RPG like game, mainly aesthetic)."** Composite-rectangle pixel sprites + monospace text + scanlines + repeated back-wall windows + tile lines. Stops short of full pixel art but reads as the same genre.
 - **"Color and lighting to set a tone."** Per-year palette + overhead lamp pools per hallway. Each year reads as the same hallway in different light.
 - **"Spotlights on objects?"** The colored floor glow under each memory acts as a spotlight, and brightens after a choice.
 - **"Empty space affecting reflection."** Memories are spread `320px` apart in a `1800px` hallway. Long, deliberate stretches of empty space between encounters. The doorway opens into a black overlay — empty space that holds the reflection.

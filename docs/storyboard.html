@@ -332,9 +332,9 @@
 <!-- ============================================================ -->
 <section>
   <h2>Visual Language</h2>
-  <div class="sub">A 4:3 boxed frame used to invoke a sense of nostalgia. 
-    Side-scrolling hallway with doors along the back wall, floor tiles, 
-    soft overhead lamp pools, drifting dust particles, and a CRT scanline overlay. 
+  <div class="sub">A 4:3 boxed frame used to invoke a sense of nostalgia.
+    Side-scrolling hallway with windows along the back wall, floor tiles,
+    soft overhead lamp pools, drifting dust particles, and a CRT scanline overlay.
     These elements allow the experience to feel like an old game cartridge that remembers you.</div>
 
   <div class="visual-notes">
@@ -342,7 +342,7 @@
     <ul>
       <li><em>4:3 boxed viewport</em> — containment. Memories arrive framed.</li>
       <li><em>CRT scanlines</em> + thin vignette frame — nostalgia, an old screen vibe.</li>
-      <li><em>Doors along the back wall</em> — The hallway is somewhere, not nowhere.</li>
+      <li><em>Windows along the back wall</em> — framed glass with a cross mullion and a sill, with a faint wash of the year's ambient light over the pane and a soft spill of light below. The hallway reads as somewhere, not nowhere — and the windows double as anchors for the Year 4 "stay a while" sun-ray effect when the player sits in the chair.</li>
       <li><em>Overhead lamp pools</em> — soft elliptical light. Anchors the player to the architecture.</li>
       <li><em>Floor tile lines</em> — short stripes at the front edge of the floor; reads as perspective.</li>
       <li><em>Drifting dust particles</em> — tinted by the year's palette. Slow, ambient motion.</li>
@@ -383,13 +383,43 @@
     <svg class="mockup" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid meet">
       <rect width="800" height="220" fill="#070a14"/>
       <rect x="0" y="60" width="800" height="120" fill="#0d111c"/>
-      <!-- doors -->
+      <!-- windows along the back wall (glass + light wash + frame + cross mullion + sill) -->
       <g>
-        <rect x="60"  y="70" width="44" height="50" fill="#0a1224" stroke="#1a3258"/>
-        <rect x="200" y="70" width="44" height="50" fill="#0a1224" stroke="#1a3258"/>
-        <rect x="340" y="70" width="44" height="50" fill="#0a1224" stroke="#1a3258"/>
-        <rect x="480" y="70" width="44" height="50" fill="#0a1224" stroke="#1a3258"/>
-        <rect x="620" y="70" width="44" height="50" fill="#0a1224" stroke="#1a3258"/>
+        <!-- window at cx=82 -->
+        <rect x="61"  y="72" width="42" height="38" fill="#0a1224"/>
+        <rect x="61"  y="72" width="42" height="38" fill="#4a6088" fill-opacity="0.18"/>
+        <rect x="61"  y="72" width="42" height="38" fill="none" stroke="#1a3258" stroke-width="2"/>
+        <line x1="82"  y1="72" x2="82"  y2="110" stroke="#1a3258" stroke-width="1.5"/>
+        <line x1="61"  y1="91" x2="103" y2="91"  stroke="#1a3258" stroke-width="1.5"/>
+        <rect x="57"  y="110" width="50" height="3" fill="#1a3258"/>
+        <!-- window at cx=222 -->
+        <rect x="201" y="72" width="42" height="38" fill="#0a1224"/>
+        <rect x="201" y="72" width="42" height="38" fill="#4a6088" fill-opacity="0.18"/>
+        <rect x="201" y="72" width="42" height="38" fill="none" stroke="#1a3258" stroke-width="2"/>
+        <line x1="222" y1="72" x2="222" y2="110" stroke="#1a3258" stroke-width="1.5"/>
+        <line x1="201" y1="91" x2="243" y2="91"  stroke="#1a3258" stroke-width="1.5"/>
+        <rect x="197" y="110" width="50" height="3" fill="#1a3258"/>
+        <!-- window at cx=362 -->
+        <rect x="341" y="72" width="42" height="38" fill="#0a1224"/>
+        <rect x="341" y="72" width="42" height="38" fill="#4a6088" fill-opacity="0.18"/>
+        <rect x="341" y="72" width="42" height="38" fill="none" stroke="#1a3258" stroke-width="2"/>
+        <line x1="362" y1="72" x2="362" y2="110" stroke="#1a3258" stroke-width="1.5"/>
+        <line x1="341" y1="91" x2="383" y2="91"  stroke="#1a3258" stroke-width="1.5"/>
+        <rect x="337" y="110" width="50" height="3" fill="#1a3258"/>
+        <!-- window at cx=502 -->
+        <rect x="481" y="72" width="42" height="38" fill="#0a1224"/>
+        <rect x="481" y="72" width="42" height="38" fill="#4a6088" fill-opacity="0.18"/>
+        <rect x="481" y="72" width="42" height="38" fill="none" stroke="#1a3258" stroke-width="2"/>
+        <line x1="502" y1="72" x2="502" y2="110" stroke="#1a3258" stroke-width="1.5"/>
+        <line x1="481" y1="91" x2="523" y2="91"  stroke="#1a3258" stroke-width="1.5"/>
+        <rect x="477" y="110" width="50" height="3" fill="#1a3258"/>
+        <!-- window at cx=642 -->
+        <rect x="621" y="72" width="42" height="38" fill="#0a1224"/>
+        <rect x="621" y="72" width="42" height="38" fill="#4a6088" fill-opacity="0.18"/>
+        <rect x="621" y="72" width="42" height="38" fill="none" stroke="#1a3258" stroke-width="2"/>
+        <line x1="642" y1="72" x2="642" y2="110" stroke="#1a3258" stroke-width="1.5"/>
+        <line x1="621" y1="91" x2="663" y2="91"  stroke="#1a3258" stroke-width="1.5"/>
+        <rect x="617" y="110" width="50" height="3" fill="#1a3258"/>
       </g>
       <!-- floor strips -->
       <g opacity="0.5">
@@ -575,12 +605,38 @@ No one taught you how. You did it anyway.</span></div>
     <svg class="mockup" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid meet">
       <rect width="800" height="220" fill="#07120a"/>
       <rect x="0" y="60" width="800" height="120" fill="#0d1810"/>
+      <!-- windows along the back wall -->
       <g>
-        <rect x="60"  y="70" width="44" height="50" fill="#0b1a10" stroke="#224a2e"/>
-        <rect x="200" y="70" width="44" height="50" fill="#0b1a10" stroke="#224a2e"/>
-        <rect x="340" y="70" width="44" height="50" fill="#0b1a10" stroke="#224a2e"/>
-        <rect x="480" y="70" width="44" height="50" fill="#0b1a10" stroke="#224a2e"/>
-        <rect x="620" y="70" width="44" height="50" fill="#0b1a10" stroke="#224a2e"/>
+        <rect x="61"  y="72" width="42" height="38" fill="#0b1a10"/>
+        <rect x="61"  y="72" width="42" height="38" fill="#4e7058" fill-opacity="0.18"/>
+        <rect x="61"  y="72" width="42" height="38" fill="none" stroke="#224a2e" stroke-width="2"/>
+        <line x1="82"  y1="72" x2="82"  y2="110" stroke="#224a2e" stroke-width="1.5"/>
+        <line x1="61"  y1="91" x2="103" y2="91"  stroke="#224a2e" stroke-width="1.5"/>
+        <rect x="57"  y="110" width="50" height="3" fill="#224a2e"/>
+        <rect x="201" y="72" width="42" height="38" fill="#0b1a10"/>
+        <rect x="201" y="72" width="42" height="38" fill="#4e7058" fill-opacity="0.18"/>
+        <rect x="201" y="72" width="42" height="38" fill="none" stroke="#224a2e" stroke-width="2"/>
+        <line x1="222" y1="72" x2="222" y2="110" stroke="#224a2e" stroke-width="1.5"/>
+        <line x1="201" y1="91" x2="243" y2="91"  stroke="#224a2e" stroke-width="1.5"/>
+        <rect x="197" y="110" width="50" height="3" fill="#224a2e"/>
+        <rect x="341" y="72" width="42" height="38" fill="#0b1a10"/>
+        <rect x="341" y="72" width="42" height="38" fill="#4e7058" fill-opacity="0.18"/>
+        <rect x="341" y="72" width="42" height="38" fill="none" stroke="#224a2e" stroke-width="2"/>
+        <line x1="362" y1="72" x2="362" y2="110" stroke="#224a2e" stroke-width="1.5"/>
+        <line x1="341" y1="91" x2="383" y2="91"  stroke="#224a2e" stroke-width="1.5"/>
+        <rect x="337" y="110" width="50" height="3" fill="#224a2e"/>
+        <rect x="481" y="72" width="42" height="38" fill="#0b1a10"/>
+        <rect x="481" y="72" width="42" height="38" fill="#4e7058" fill-opacity="0.18"/>
+        <rect x="481" y="72" width="42" height="38" fill="none" stroke="#224a2e" stroke-width="2"/>
+        <line x1="502" y1="72" x2="502" y2="110" stroke="#224a2e" stroke-width="1.5"/>
+        <line x1="481" y1="91" x2="523" y2="91"  stroke="#224a2e" stroke-width="1.5"/>
+        <rect x="477" y="110" width="50" height="3" fill="#224a2e"/>
+        <rect x="621" y="72" width="42" height="38" fill="#0b1a10"/>
+        <rect x="621" y="72" width="42" height="38" fill="#4e7058" fill-opacity="0.18"/>
+        <rect x="621" y="72" width="42" height="38" fill="none" stroke="#224a2e" stroke-width="2"/>
+        <line x1="642" y1="72" x2="642" y2="110" stroke="#224a2e" stroke-width="1.5"/>
+        <line x1="621" y1="91" x2="663" y2="91"  stroke="#224a2e" stroke-width="1.5"/>
+        <rect x="617" y="110" width="50" height="3" fill="#224a2e"/>
       </g>
       <g opacity="0.7">
         <ellipse cx="80"  cy="66" rx="40" ry="6" fill="#4e7058"/>
@@ -677,12 +733,38 @@ Noticing is its own kind of progress.</span></div>
     <svg class="mockup" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid meet">
       <rect width="800" height="220" fill="#140a05"/>
       <rect x="0" y="60" width="800" height="120" fill="#1c1208"/>
+      <!-- windows along the back wall -->
       <g>
-        <rect x="60"  y="70" width="44" height="50" fill="#180e06" stroke="#4e3415"/>
-        <rect x="200" y="70" width="44" height="50" fill="#180e06" stroke="#4e3415"/>
-        <rect x="340" y="70" width="44" height="50" fill="#180e06" stroke="#4e3415"/>
-        <rect x="480" y="70" width="44" height="50" fill="#180e06" stroke="#4e3415"/>
-        <rect x="620" y="70" width="44" height="50" fill="#180e06" stroke="#4e3415"/>
+        <rect x="61"  y="72" width="42" height="38" fill="#180e06"/>
+        <rect x="61"  y="72" width="42" height="38" fill="#8e6628" fill-opacity="0.18"/>
+        <rect x="61"  y="72" width="42" height="38" fill="none" stroke="#4e3415" stroke-width="2"/>
+        <line x1="82"  y1="72" x2="82"  y2="110" stroke="#4e3415" stroke-width="1.5"/>
+        <line x1="61"  y1="91" x2="103" y2="91"  stroke="#4e3415" stroke-width="1.5"/>
+        <rect x="57"  y="110" width="50" height="3" fill="#4e3415"/>
+        <rect x="201" y="72" width="42" height="38" fill="#180e06"/>
+        <rect x="201" y="72" width="42" height="38" fill="#8e6628" fill-opacity="0.18"/>
+        <rect x="201" y="72" width="42" height="38" fill="none" stroke="#4e3415" stroke-width="2"/>
+        <line x1="222" y1="72" x2="222" y2="110" stroke="#4e3415" stroke-width="1.5"/>
+        <line x1="201" y1="91" x2="243" y2="91"  stroke="#4e3415" stroke-width="1.5"/>
+        <rect x="197" y="110" width="50" height="3" fill="#4e3415"/>
+        <rect x="341" y="72" width="42" height="38" fill="#180e06"/>
+        <rect x="341" y="72" width="42" height="38" fill="#8e6628" fill-opacity="0.18"/>
+        <rect x="341" y="72" width="42" height="38" fill="none" stroke="#4e3415" stroke-width="2"/>
+        <line x1="362" y1="72" x2="362" y2="110" stroke="#4e3415" stroke-width="1.5"/>
+        <line x1="341" y1="91" x2="383" y2="91"  stroke="#4e3415" stroke-width="1.5"/>
+        <rect x="337" y="110" width="50" height="3" fill="#4e3415"/>
+        <rect x="481" y="72" width="42" height="38" fill="#180e06"/>
+        <rect x="481" y="72" width="42" height="38" fill="#8e6628" fill-opacity="0.18"/>
+        <rect x="481" y="72" width="42" height="38" fill="none" stroke="#4e3415" stroke-width="2"/>
+        <line x1="502" y1="72" x2="502" y2="110" stroke="#4e3415" stroke-width="1.5"/>
+        <line x1="481" y1="91" x2="523" y2="91"  stroke="#4e3415" stroke-width="1.5"/>
+        <rect x="477" y="110" width="50" height="3" fill="#4e3415"/>
+        <rect x="621" y="72" width="42" height="38" fill="#180e06"/>
+        <rect x="621" y="72" width="42" height="38" fill="#8e6628" fill-opacity="0.18"/>
+        <rect x="621" y="72" width="42" height="38" fill="none" stroke="#4e3415" stroke-width="2"/>
+        <line x1="642" y1="72" x2="642" y2="110" stroke="#4e3415" stroke-width="1.5"/>
+        <line x1="621" y1="91" x2="663" y2="91"  stroke="#4e3415" stroke-width="1.5"/>
+        <rect x="617" y="110" width="50" height="3" fill="#4e3415"/>
       </g>
       <g opacity="0.7">
         <ellipse cx="80"  cy="66" rx="40" ry="6" fill="#8e6628"/>
@@ -779,12 +861,38 @@ You let weight be a teacher.</span></div>
     <svg class="mockup" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid meet">
       <rect width="800" height="220" fill="#12110d"/>
       <rect x="0" y="60" width="800" height="120" fill="#1c1a14"/>
+      <!-- windows along the back wall -->
       <g>
-        <rect x="60"  y="70" width="44" height="50" fill="#18160f" stroke="#4a443a"/>
-        <rect x="200" y="70" width="44" height="50" fill="#18160f" stroke="#4a443a"/>
-        <rect x="340" y="70" width="44" height="50" fill="#18160f" stroke="#4a443a"/>
-        <rect x="480" y="70" width="44" height="50" fill="#18160f" stroke="#4a443a"/>
-        <rect x="620" y="70" width="44" height="50" fill="#18160f" stroke="#4a443a"/>
+        <rect x="61"  y="72" width="42" height="38" fill="#18160f"/>
+        <rect x="61"  y="72" width="42" height="38" fill="#a49a78" fill-opacity="0.18"/>
+        <rect x="61"  y="72" width="42" height="38" fill="none" stroke="#4a443a" stroke-width="2"/>
+        <line x1="82"  y1="72" x2="82"  y2="110" stroke="#4a443a" stroke-width="1.5"/>
+        <line x1="61"  y1="91" x2="103" y2="91"  stroke="#4a443a" stroke-width="1.5"/>
+        <rect x="57"  y="110" width="50" height="3" fill="#4a443a"/>
+        <rect x="201" y="72" width="42" height="38" fill="#18160f"/>
+        <rect x="201" y="72" width="42" height="38" fill="#a49a78" fill-opacity="0.18"/>
+        <rect x="201" y="72" width="42" height="38" fill="none" stroke="#4a443a" stroke-width="2"/>
+        <line x1="222" y1="72" x2="222" y2="110" stroke="#4a443a" stroke-width="1.5"/>
+        <line x1="201" y1="91" x2="243" y2="91"  stroke="#4a443a" stroke-width="1.5"/>
+        <rect x="197" y="110" width="50" height="3" fill="#4a443a"/>
+        <rect x="341" y="72" width="42" height="38" fill="#18160f"/>
+        <rect x="341" y="72" width="42" height="38" fill="#a49a78" fill-opacity="0.18"/>
+        <rect x="341" y="72" width="42" height="38" fill="none" stroke="#4a443a" stroke-width="2"/>
+        <line x1="362" y1="72" x2="362" y2="110" stroke="#4a443a" stroke-width="1.5"/>
+        <line x1="341" y1="91" x2="383" y2="91"  stroke="#4a443a" stroke-width="1.5"/>
+        <rect x="337" y="110" width="50" height="3" fill="#4a443a"/>
+        <rect x="481" y="72" width="42" height="38" fill="#18160f"/>
+        <rect x="481" y="72" width="42" height="38" fill="#a49a78" fill-opacity="0.18"/>
+        <rect x="481" y="72" width="42" height="38" fill="none" stroke="#4a443a" stroke-width="2"/>
+        <line x1="502" y1="72" x2="502" y2="110" stroke="#4a443a" stroke-width="1.5"/>
+        <line x1="481" y1="91" x2="523" y2="91"  stroke="#4a443a" stroke-width="1.5"/>
+        <rect x="477" y="110" width="50" height="3" fill="#4a443a"/>
+        <rect x="621" y="72" width="42" height="38" fill="#18160f"/>
+        <rect x="621" y="72" width="42" height="38" fill="#a49a78" fill-opacity="0.18"/>
+        <rect x="621" y="72" width="42" height="38" fill="none" stroke="#4a443a" stroke-width="2"/>
+        <line x1="642" y1="72" x2="642" y2="110" stroke="#4a443a" stroke-width="1.5"/>
+        <line x1="621" y1="91" x2="663" y2="91"  stroke="#4a443a" stroke-width="1.5"/>
+        <rect x="617" y="110" width="50" height="3" fill="#4a443a"/>
       </g>
       <g opacity="0.7">
         <ellipse cx="80"  cy="66" rx="40" ry="6" fill="#a49a78"/>
