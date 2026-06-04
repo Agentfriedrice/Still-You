@@ -33,10 +33,20 @@ function getGameConfig() {
         debug: false
       }
     },
-    scene: {
-      preload: preload,
-      create: create,
-      update: update
-    }
+    // Two scenes registered: the title screen runs first (Phaser starts the
+    // first scene in this array by default), then hands off to the main game
+    // scene on the player's "press E to begin" via scene.start("GameScene").
+    scene: [
+      {
+        key: "TitleScene",
+        create: createTitleScene
+      },
+      {
+        key: "GameScene",
+        preload: preload,
+        create: create,
+        update: update
+      }
+    ]
   };
 }
