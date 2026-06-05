@@ -68,7 +68,8 @@ function updatePlayerMovement() {
   player.setVelocity(0);
 
   const blocked =
-    isDialogueOpen || doorwayActive || isTransitioning || sitState === "sitting";
+    isDialogueOpen || doorwayActive || isTransitioning ||
+    sitState === "sitting" || hugInProgress;
   if (!blocked) {
     if (keys.left.isDown) {
       player.setVelocityX(-speed);

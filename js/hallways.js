@@ -364,20 +364,38 @@ const hallwayDefinitions = [
 // Multi-hallway lifecycle: load, transition, restart.
 // ---------------------------------------------------------------------------
 
-function loadHallway(scene, index) {
+function loadHallway(scene, index, opts) {
+  // opts: { spawnAt: "left" | "right" } — controls which side the player
+  // appears at when the hallway loads. Default is "left" (entering from the
+  // previous year). Epilogue backward transitions pass "right" so the player
+  // walks out of the doorway they "stepped back through."
+  opts = opts || {};
+  const spawnAt = opts.spawnAt || "left";
+
   // Tear down anything from the previous hallway.
   destroyHallwayObjects();
   memoryGlows = {};
   interactables = null;
   endingZone = null;
+  backDoorwayZone = null;
+  backDoorwayHint = null;
+  firstYearSelf = null;
+  firstYearSelfZone = null;
+  firstYearSelfHint = null;
   doorwayActive = false;
 
   // Reset the graduation cap — it only ever exists within Year 4.
-  if (playerCap) {
-    playerCap.destroy();
-    playerCap = null;
+  // In normal play the cap is Year-4-only and gets torn down on each
+  // transition. In epilogue mode, the player carries it back through every
+  // hallway — keep both the sprite and the capState so updatePlayerVisuals
+  // continues to track it onto the player's head as they walk.
+  if (!epilogueMode) {
+    if (playerCap) {
+      playerCap.destroy();
+      playerCap = null;
+    }
+    capState = "none";
   }
-  capState = "none";
 
   // Reset the "stay a while" chair — also Year-4-only.
   if (chair) {
@@ -390,6 +408,9 @@ function loadHallway(scene, index) {
   }
   chairZone = null;
   sitState = "none";
+  // Always reset to false so the next hallway's illumination (in epilogue
+  // mode) starts from scratch — the flag is a per-hallway latch, not a
+  // global one.
   roomIlluminated = false;
 
   currentHallwayIndex = index;
@@ -415,9 +436,15 @@ function loadHallway(scene, index) {
   createAllInteractables(scene, hw);
   createDoorway(scene, hw);
 
-  // Reset the player to the start of the hallway.
+  // Reset the player. Forward-entering puts the player at the left start;
+  // backward-entering (epilogue walk-back) puts them just inside the right
+  // doorway so they walk out of it.
   if (player) {
-    player.x = 200;
+    if (spawnAt === "right") {
+      player.x = hallwayRight - 90;
+    } else {
+      player.x = 200;
+    }
     player.y = 300;
     if (player.body) {
       player.body.reset(player.x, player.y);
@@ -426,6 +453,96 @@ function loadHallway(scene, index) {
 
   // Swap the player's outfit to match this year's colorwave.
   applyPlayerOutfit(hw);
+
+  // Epilogue mode add-ons. The chair-illumination is applied immediately to
+  // each hallway that loads after the player sat down; the LEFT edge becomes
+  // a back-doorway threshold (except in Year 1, which is the destination);
+  // and Year 1 spawns the first-year self.
+  if (epilogueMode) {
+    if (typeof illuminateRoom === "function") {
+      // The original Year 4 chair illumination already ran with a slow
+      // reveal — but every BACKWARD-loaded hallway needs the sun present
+      // as the player emerges from the transition fade. spawnAt === "right"
+      // is our signal that the player walked back into this hallway.
+      illuminateRoom(scene, { fast: spawnAt === "right" });
+    }
+    if (index > 0) {
+      createBackDoorway(scene, hw);
+    }
+    if (index === 0 && typeof spawnFirstYearSelf === "function") {
+      spawnFirstYearSelf(scene);
+    }
+  }
+}
+
+// Backward doorway on the LEFT edge of the hallway, only present in epilogue
+// mode. Mirrors the right-edge doorway visually so the player reads it as the
+// same kind of threshold, just facing the other way.
+function createBackDoorway(scene, hallway) {
+  const zoneX = hallwayLeft + 40;
+  const zoneY = (hallwayTop + hallwayBottom) / 2;
+  const p = hallway.palette;
+
+  const beam = scene.add.rectangle(zoneX, zoneY, 2, hallwayBottom - hallwayTop - 40, 0xffe8b0, 0.22);
+  beam.setDepth(-4);
+  currentHallwayObjects.push(beam);
+
+  const frameHeight = hallwayBottom - hallwayTop - 30;
+  const frame = scene.add.rectangle(zoneX, zoneY, 30, frameHeight, 0x000000, 0);
+  frame.setStrokeStyle(2, p.doorStroke);
+  frame.setDepth(-4);
+  currentHallwayObjects.push(frame);
+
+  const hintText = scene.add.text(zoneX, zoneY - 70, "step back", {
+    fontFamily: "monospace",
+    fontSize: "11px",
+    color: p.labelColor
+  });
+  hintText.setOrigin(0.5, 0.5);
+  hintText.setDepth(-3);
+  hintText.setAlpha(0.7);
+  currentHallwayObjects.push(hintText);
+
+  backDoorwayZone = {
+    x: zoneX,
+    y: zoneY,
+    halfWidth: 32,
+    halfHeight: frameHeight / 2
+  };
+  backDoorwayHint = hintText;
+}
+
+// Backward sibling of transitionToNextHallway — fades to black, loads the
+// previous hallway, fades back in. Used in epilogue mode when the player
+// crosses the LEFT edge of years 2/3/4.
+function transitionToPrevHallway(scene) {
+  if (isTransitioning) return;
+  if (currentHallwayIndex <= 0) return;
+  isTransitioning = true;
+
+  scene.cameras.main.fadeOut(900, 0, 0, 0);
+  scene.cameras.main.once("camerafadeoutcomplete", () => {
+    loadHallway(scene, currentHallwayIndex - 1, { spawnAt: "right" });
+    scene.cameras.main.fadeIn(900, 0, 0, 0);
+    scene.cameras.main.once("camerafadeincomplete", () => {
+      isTransitioning = false;
+    });
+  });
+}
+
+// Per-frame check (called from scene.update). When the player walks into the
+// back-doorway slab in epilogue mode, advance the walk-back.
+function updateBackDoorwayTrigger(scene) {
+  if (!epilogueMode) return;
+  if (!backDoorwayZone) return;
+  if (doorwayActive || isTransitioning || isDialogueOpen || hugInProgress) return;
+  if (sitState === "sitting") return;
+
+  const dx = Math.abs(player.x - backDoorwayZone.x);
+  const dy = Math.abs(player.y - backDoorwayZone.y);
+  if (dx < backDoorwayZone.halfWidth && dy < backDoorwayZone.halfHeight) {
+    transitionToPrevHallway(scene);
+  }
 }
 
 function destroyHallwayObjects() {

@@ -57,6 +57,14 @@ function updateDoorwayTrigger(scene) {
   if (doorwayActive || isTransitioning || isDialogueOpen) return;
   if (!endingZone) return;
 
+  // In epilogue mode the right-edge doorway is sealed — the player has
+  // already passed through it. The hint is hidden so the player's eye is
+  // drawn to the new LEFT-edge threshold instead.
+  if (epilogueMode) {
+    if (endingZone.hintText) endingZone.hintText.setAlpha(0);
+    return;
+  }
+
   // Refresh the doorway hint based on current handled count.
   if (endingZone.hintText) {
     if (allMemoriesHandled()) {

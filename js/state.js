@@ -75,3 +75,23 @@ let roomIlluminated = false;
 // X-centres of the back-wall windows for the current hallway. Populated in
 // createAtmosphere; read by the sun-ray effect in chair.js.
 let windowPositions = [];
+
+// --- Epilogue (post-chair walk-back) ----------------------------------------
+// Once the player has sat in the Year 4 chair, the game enters "epilogue
+// mode": every hallway loads illuminated with the warm sun layer, memory
+// dialogues no longer open, the right-edge doorway is sealed, and a new
+// LEFT-edge threshold appears that walks the player back to the previous
+// year. At the start of Year 1 they meet their first-year self.
+let epilogueMode = false;
+let epilogueReady = false;          // set true once the sit-hint has appeared
+let backDoorwayZone = null;         // left-edge "step back" trigger, per hallway
+let backDoorwayHint = null;         // the small hint text near the back doorway
+let sitHintShown = false;           // gated so the sit-hint only fades in once
+
+// First-year self — the past-you the player meets at the start of Year 1 in
+// epilogue mode. A composite Phaser container drawn in the original blue/gray
+// Year 1 outfit, with its own proximity zone and a single "hug" interaction.
+let firstYearSelf = null;
+let firstYearSelfZone = null;       // { x, y, radius }
+let firstYearSelfHint = null;
+let hugInProgress = false;          // true once the hug animation is running

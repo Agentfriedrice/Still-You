@@ -51,6 +51,8 @@ function update() {
   updateCurrentInteractable();
   updateChairHint();
   updateDoorwayTrigger(this);
+  updateBackDoorwayTrigger(this);
+  updateFirstYearSelfHint();
 
   // Doorway overlay: dismiss with [E] (advance) or [Q] (go back).
   if (doorwayActive) {
@@ -83,12 +85,29 @@ function update() {
   // [E] is the universal advance/interact key.
   if (Phaser.Input.Keyboard.JustDown(interactKey)) {
     if (isDialogueOpen) {
-      advanceDialogue(this);
+      // The epilogue "It's you!" conversation runs through its own advance
+      // function (it doesn't use the memory-dialogue state machine). Detect
+      // that path by checking the epilogue stage; otherwise fall back to
+      // the regular memory dialogue advance.
+      if (typeof firstYearSelfDialogueStage !== "undefined" &&
+          firstYearSelfDialogueStage !== "closed") {
+        advanceEpilogueDialogue(this);
+      } else {
+        advanceDialogue(this);
+      }
+    } else if (hugInProgress) {
+      // No input during the hug animation — it's a moment, not a menu.
     } else if (sitState === "sitting") {
       standFromChair();
     } else if (isNearChair()) {
       sitInChair();
-    } else if (currentObject) {
+    } else if (typeof isNearFirstYearSelf === "function" && isNearFirstYearSelf()) {
+      // Epilogue: meeting your first-year self. Opens the "It's you!"
+      // single-choice dialogue with the "hug" affordance.
+      openFirstYearSelfDialogue(this);
+    } else if (currentObject && !epilogueMode) {
+      // Memory dialogues are sealed in epilogue mode — the past is past.
+      // The glows are still visible; pressing E next to them does nothing.
       openDialogue(currentObject);
     }
   }

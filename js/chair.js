@@ -79,6 +79,56 @@ function sitInChair() {
 
   // The quiet, warm transformation of the room.
   illuminateRoom(gameScene);
+
+  // Sitting commits the player to the epilogue: from this point on, every
+  // hallway will reload illuminated, memory dialogues are sealed, and a
+  // backward-walking threshold appears on the left edge of each year.
+  epilogueMode = true;
+
+  // Once the sun has fully filled the room, fade in a quiet hint at the
+  // bottom of the viewport inviting the player to walk back. Anchored to the
+  // camera (scrollFactor 0) so it stays visible no matter where the player
+  // wanders. Only spawned once per session — if the player stands and re-
+  // sits, the hint is already on screen.
+  if (!sitHintShown) {
+    sitHintShown = true;
+    gameScene.time.delayedCall(21000, () => {
+      // If the player already started walking back (or the hallway changed),
+      // skip — the hint would be stale.
+      if (!epilogueMode || currentHallwayIndex !== hallwayDefinitions.length - 1) return;
+      spawnEpilogueSitHint(gameScene);
+    });
+  }
+}
+
+// A bottom-anchored italic hint that fades in after the sun has settled,
+// inviting the player to walk back through the hallways. Screen-anchored so
+// it's always visible — some players won't think to wander back without a
+// nudge.
+function spawnEpilogueSitHint(scene) {
+  const text = scene.add.text(
+    gameWidth / 2,
+    gameHeight - 32,
+    "go back through the hallways, if you like",
+    {
+      fontFamily: "monospace",
+      fontSize: "12px",
+      color: "#ffd9a0",
+      fontStyle: "italic"
+    }
+  );
+  text.setOrigin(0.5, 0.5);
+  text.setScrollFactor(0);
+  text.setDepth(900);
+  text.setAlpha(0);
+  currentHallwayObjects.push(text);
+
+  scene.tweens.add({
+    targets: text,
+    alpha: 0.8,
+    duration: 2400,
+    ease: "Sine.easeInOut"
+  });
 }
 
 function standFromChair() {
@@ -92,6 +142,17 @@ function standFromChair() {
 
   if (chairHint) chairHint.setText("[E] sit");
   // The room stays changed — the warm light does not fade.
+
+  // Year 4 was loaded BEFORE the player sat, so its back-doorway visual +
+  // trigger zone hasn't been created yet — the loadHallway epilogue branch
+  // only fires when epilogueMode is already true at load time. Now that the
+  // player is standing up in epilogue mode, materialise that threshold so
+  // walking left actually triggers the backward transition.
+  if (epilogueMode && !backDoorwayZone && currentHallwayIndex > 0 &&
+      typeof createBackDoorway === "function") {
+    const hw = hallwayDefinitions[currentHallwayIndex];
+    createBackDoorway(gameScene, hw);
+  }
 }
 
 // Per-frame: brighten the chair hint when the player is close.
@@ -121,11 +182,18 @@ function lerpColor(c1, c2, t) {
 // Everything fades in slowly over ~5 seconds for a gentle reveal, and stays
 // — the room is changed for the rest of this Year 4 visit.
 // ---------------------------------------------------------------------------
-function illuminateRoom(scene) {
+function illuminateRoom(scene, opts) {
   if (roomIlluminated) return;
   roomIlluminated = true;
 
-  const FADE = 20000; // ~15-second gentle reveal
+  // When the chair sits the player in Year 4, the illumination takes ~20s —
+  // it's meant to fill the room slowly while the player watches. When the
+  // player walks back through illuminated hallways in epilogue mode the sun
+  // should already be there as they emerge from the fade, so we use a much
+  // shorter reveal. Callers in epilogue passes { fast: true }; default
+  // behavior is the original slow reveal.
+  opts = opts || {};
+  const FADE = opts.fast ? 1500 : 20000;
   const lit = [];
 
   // --- Yellow -> orange gradient over the whole hallway interior. ---
@@ -181,7 +249,7 @@ function illuminateRoom(scene) {
         targets: beam,
         fillAlpha: 0.13,
         duration: FADE,
-        delay: 600,
+        delay: opts.fast ? 0 : 600,
         ease: "Sine.easeInOut"
       });
     }
