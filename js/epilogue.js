@@ -236,9 +236,6 @@ function performHug(scene) {
     ease: "Sine.easeInOut"
   });
 
-  // ---- No radiating glow. The moment lives in the lean + the stillness
-  // alone — the previous expanding sun effect was visually loud and pulled
-  // attention away from the figures.
 
   // ---- Final whisper. Fades in during the embrace (well into the hold),
   // sits visible for a few seconds, then is taken out with everything else
