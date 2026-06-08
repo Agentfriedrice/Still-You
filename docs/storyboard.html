@@ -273,21 +273,94 @@
 
 <header class="cover">
   <h1>STILL YOU</h1>
-  <div class="subtitle">storyboard &amp; system flowchart · vis 160a</div>
+  <div class="subtitle">storyboard &amp; system flowchart</div>
   <blockquote>
-    An interactive 2D pixel-art web experience where the user walks through a dark, memory-like hallway, 
-    encountering objects from the past, and makes small choices that shape a reflective ending about growth, 
+    An interactive 2D pixel-art web experience where the user walks through a dark, memory-like hallway,
+    encountering objects from the past, and makes small choices that shape a reflective ending about growth,
     regret, care, and identity.
   </blockquote>
 </header>
+
+<!-- ============================================================ -->
+<!-- Title screen -->
+<!-- ============================================================ -->
+<section>
+  <h2>Title Screen</h2>
+  <div class="sub">The very first thing the player sees. Sets the mood before any hallway exists. A single softly-glowing window foreshadows the architecture; the title and subtitle fade in over a few seconds; "press E to begin" pulses quietly at the bottom.</div>
+
+  <div class="year y4" style="margin-top:24px;">
+    <h3 style="font-size:18px; letter-spacing:2px;">Opening Frame</h3>
+    <div class="tagline">"a memory in four hallways."</div>
+
+    <svg class="mockup" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid meet">
+      <rect width="800" height="220" fill="#070708"/>
+
+      <!-- Foreshadowing window in cream/khaki (Year 4 palette). The title and
+           the ending should rhyme — the player starts and finishes in the
+           same warm light. -->
+      <rect x="368" y="36" width="64" height="52" fill="#18160f"/>
+      <rect x="368" y="36" width="64" height="52" fill="#a49a78" fill-opacity="0.22"/>
+      <rect x="368" y="36" width="64" height="52" fill="none" stroke="#6a604a" stroke-width="2"/>
+      <line x1="400" y1="36" x2="400" y2="88" stroke="#6a604a" stroke-width="1.5"/>
+      <line x1="368" y1="62" x2="432" y2="62" stroke="#6a604a" stroke-width="1.5"/>
+      <rect x="362" y="88" width="76" height="4" fill="#6a604a"/>
+      <ellipse cx="400" cy="108" rx="44" ry="14" fill="#a49a78" fill-opacity="0.12"/>
+
+      <!-- Dust motes scattered across the frame -->
+      <g>
+        <circle cx="120" cy="60"  r="1" fill="#e6dfc6" opacity="0.5"/>
+        <circle cx="220" cy="40"  r="1" fill="#e6dfc6" opacity="0.4"/>
+        <circle cx="310" cy="130" r="1" fill="#e6dfc6" opacity="0.5"/>
+        <circle cx="520" cy="70"  r="1" fill="#e6dfc6" opacity="0.4"/>
+        <circle cx="600" cy="160" r="1" fill="#e6dfc6" opacity="0.5"/>
+        <circle cx="700" cy="50"  r="1" fill="#e6dfc6" opacity="0.4"/>
+        <circle cx="180" cy="180" r="1" fill="#e6dfc6" opacity="0.5"/>
+      </g>
+
+      <!-- Title -->
+      <text x="400" y="138" text-anchor="middle" fill="#dccfb0" font-size="20" font-family="monospace" font-weight="bold" letter-spacing="6">STILL  YOU</text>
+      <text x="400" y="158" text-anchor="middle" fill="#9a9384" font-size="11" font-family="monospace" font-style="italic">a memory in four hallways</text>
+
+      <!-- Controls -->
+      <text x="400" y="196" text-anchor="middle" fill="#777067" font-size="10" font-family="monospace">WASD move     E interact     Q back</text>
+      <!-- Begin prompt (with subtle "pulse" indicated by lighter color) -->
+      <text x="400" y="210" text-anchor="middle" fill="#bdb39c" font-size="10" font-family="monospace">press  E  to begin</text>
+
+      <!-- Scanlines -->
+      <g opacity="0.25">
+        <line x1="0" y1="20"  x2="800" y2="20"  stroke="#000"/>
+        <line x1="0" y1="40"  x2="800" y2="40"  stroke="#000"/>
+        <line x1="0" y1="60"  x2="800" y2="60"  stroke="#000"/>
+        <line x1="0" y1="80"  x2="800" y2="80"  stroke="#000"/>
+        <line x1="0" y1="100" x2="800" y2="100" stroke="#000"/>
+        <line x1="0" y1="120" x2="800" y2="120" stroke="#000"/>
+        <line x1="0" y1="140" x2="800" y2="140" stroke="#000"/>
+        <line x1="0" y1="160" x2="800" y2="160" stroke="#000"/>
+        <line x1="0" y1="180" x2="800" y2="180" stroke="#000"/>
+        <line x1="0" y1="200" x2="800" y2="200" stroke="#000"/>
+      </g>
+      <!-- Frame -->
+      <rect x="0" y="0" width="800" height="220" fill="none" stroke="#000" stroke-width="4"/>
+    </svg>
+
+    <div class="visual-notes" style="margin-top:18px;">
+      <strong>Design notes:</strong>
+      <ul>
+        <li><em>Same visual hardware as the hallways.</em> CRT scanlines, vignette frame, drifting dust, the boxed 4:3 viewport — the title screen is rendered on the same imagined cartridge as the rest of the experience.</li>
+        <li><em>Cream window foreshadows Year 4.</em> The single warm-cream window in the center uses the Year 4 "becoming" palette, not any of the earlier years. The journey starts and ends in the same light — the title is a quiet preview of where the player is going.</li>
+        <li><em>Staged fade-in.</em> Black for ~0.8s, then title fades in (~0.5s delay, 1.8s tween), then subtitle (~2s delay), then controls (~3.3s delay, dim), then "press E to begin" pulses in last (~3.8s delay). Total wait: ~3.8s before the prompt is visible. Input is live from the start though — the staging is mood, not gating.</li>
+        <li><em>Press E (or click).</em> The title fades to black over ~1.1s and the first hallway loads. From this point on the title screen only returns once: after the epilogue hug, at the very end.</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
 <!-- ============================================================ -->
 <!-- Arc -->
 <!-- ============================================================ -->
 <section>
   <h2>The Arc</h2>
-  <div class="sub">Four hallways, four years. Each one ends in a doorway. 
-    The doorway reflects what the player did and lets them step through to the next.</div>
+  <div class="sub">Title screen, four hallways, four years, and a quiet epilogue. Each hallway ends in a doorway; the doorway reflects what the player did and lets them step through to the next.</div>
 
   <table style="width:100%; font-size:12px; border-collapse: collapse;">
     <thead style="color: var(--text-dim); text-align:left;">
@@ -299,6 +372,12 @@
       </tr>
     </thead>
     <tbody>
+      <tr>
+        <td style="padding:8px; color: var(--y4);">Title screen</td>
+        <td style="padding:8px;">A memory in four hallways</td>
+        <td style="padding:8px;">Warm cream (Year 4 preview)</td>
+        <td style="padding:8px;">Year 1 on [E]</td>
+      </tr>
       <tr>
         <td style="padding:8px; color: var(--y1);">Year 1 — Arrival</td>
         <td style="padding:8px;">What you brought with you</td>
@@ -321,7 +400,13 @@
         <td style="padding:8px; color: var(--y4);">Year 4 — Becoming</td>
         <td style="padding:8px;">What you carry out</td>
         <td style="padding:8px;">Warm white</td>
-        <td style="padding:8px;">The Finale</td>
+        <td style="padding:8px;">Final doorway · sit or step through</td>
+      </tr>
+      <tr>
+        <td style="padding:8px; color: var(--y4);">Epilogue — Stay a while</td>
+        <td style="padding:8px;">Walk back, illuminated. Meet your first-year self. Hug.</td>
+        <td style="padding:8px;">All four palettes, warm sun layered over</td>
+        <td style="padding:8px;">Title screen on closing whisper</td>
       </tr>
     </tbody>
   </table>
@@ -979,14 +1064,164 @@ You learned your own weight.</span></div>
 </section>
 
 <!-- ============================================================ -->
+<!-- Epilogue -->
+<!-- ============================================================ -->
+<section>
+  <h2>Epilogue — Stay a While</h2>
+  <div class="sub">The closing beat that only the player who chose [Q] "stay a little longer" at the final doorway will see. After sitting in the chair and watching the sun fill the room, the player can stand and walk back through every hallway — now illuminated — and meet their first-year self at the start of Year 1.</div>
+
+  <div class="year y4">
+    <h3>Epilogue — The Walk Back</h3>
+    <div class="tagline">"go back through the hallways, if you like."</div>
+
+    <svg class="mockup" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid meet">
+      <!-- Year 1 in epilogue mode: Year 1's blue palette with the warm
+           sun gradient layered over the top. -->
+      <rect width="800" height="220" fill="#070a14"/>
+      <rect x="0" y="60" width="800" height="120" fill="#0d111c"/>
+
+      <!-- Sun gradient bands across the floor band (lighter at top, warmer
+           at bottom) — abbreviated stack to suggest the illumination layer. -->
+      <rect x="0" y="60"  width="800" height="40" fill="#ffcf3d" fill-opacity="0.10"/>
+      <rect x="0" y="100" width="800" height="40" fill="#ffa84a" fill-opacity="0.11"/>
+      <rect x="0" y="140" width="800" height="40" fill="#ff6a1f" fill-opacity="0.10"/>
+
+      <!-- Two of the Year 1 back-wall windows (cool blue glass + warm light) -->
+      <g>
+        <rect x="201" y="72" width="42" height="38" fill="#0a1224"/>
+        <rect x="201" y="72" width="42" height="38" fill="#4a6088" fill-opacity="0.18"/>
+        <rect x="201" y="72" width="42" height="38" fill="none" stroke="#1a3258" stroke-width="2"/>
+        <line x1="222" y1="72" x2="222" y2="110" stroke="#1a3258" stroke-width="1.5"/>
+        <line x1="201" y1="91" x2="243" y2="91"  stroke="#1a3258" stroke-width="1.5"/>
+        <rect x="197" y="110" width="50" height="3" fill="#1a3258"/>
+
+        <rect x="481" y="72" width="42" height="38" fill="#0a1224"/>
+        <rect x="481" y="72" width="42" height="38" fill="#4a6088" fill-opacity="0.18"/>
+        <rect x="481" y="72" width="42" height="38" fill="none" stroke="#1a3258" stroke-width="2"/>
+        <line x1="502" y1="72" x2="502" y2="110" stroke="#1a3258" stroke-width="1.5"/>
+        <line x1="481" y1="91" x2="523" y2="91"  stroke="#1a3258" stroke-width="1.5"/>
+        <rect x="477" y="110" width="50" height="3" fill="#1a3258"/>
+      </g>
+
+      <!-- Diagonal sun shafts angled down-and-right from each window -->
+      <g opacity="0.45">
+        <rect x="218" y="118" width="14" height="60" fill="#ffe27a" transform="rotate(-25 222 118)"/>
+        <rect x="498" y="118" width="14" height="60" fill="#ffe27a" transform="rotate(-25 502 118)"/>
+      </g>
+
+      <!-- Memory glows along the floor — visible, with permanent "·" hints
+           (you can see them but pressing E does nothing). -->
+      <g>
+        <ellipse cx="142" cy="158" rx="22" ry="5" fill="#a67c52" fill-opacity="0.30"/>
+        <text x="142" y="148" text-anchor="middle" fill="#888888" font-size="14" font-family="monospace">·</text>
+
+        <ellipse cx="282" cy="158" rx="22" ry="5" fill="#c8c8c8" fill-opacity="0.30"/>
+        <text x="282" y="148" text-anchor="middle" fill="#888888" font-size="14" font-family="monospace">·</text>
+
+        <ellipse cx="422" cy="158" rx="22" ry="5" fill="#e8e6d4" fill-opacity="0.30"/>
+        <text x="422" y="148" text-anchor="middle" fill="#888888" font-size="14" font-family="monospace">·</text>
+
+        <ellipse cx="562" cy="158" rx="22" ry="5" fill="#d9a64a" fill-opacity="0.30"/>
+        <text x="562" y="148" text-anchor="middle" fill="#888888" font-size="14" font-family="monospace">·</text>
+
+        <ellipse cx="702" cy="158" rx="22" ry="5" fill="#eeb6c4" fill-opacity="0.30"/>
+        <text x="702" y="148" text-anchor="middle" fill="#888888" font-size="14" font-family="monospace">·</text>
+      </g>
+
+      <!-- First-year self at the original spawn point (left), in original
+           blue/gray outfit. Quiet "?" hint above (the only thing left to do). -->
+      <g>
+        <text x="82" y="118" text-anchor="middle" fill="#ffe8b0" font-size="14" font-family="monospace">?</text>
+        <rect x="75" y="125" width="8" height="6" fill="#2a1a10"/>
+        <rect x="75" y="131" width="8" height="8" fill="#f2d2bd"/>
+        <rect x="74" y="139" width="10" height="9" fill="#6e7e90"/>
+        <rect x="75" y="148" width="3" height="6" fill="#2a3848"/>
+        <rect x="80" y="148" width="3" height="6" fill="#2a3848"/>
+        <ellipse cx="79" cy="156" rx="14" ry="4" fill="#ffffff" fill-opacity="0.16"/>
+      </g>
+
+      <!-- Older self (the player) approaching from the right — wearing the
+           Year 1 outfit (since they're now in Year 1) AND the graduation
+           cap carried back from Year 4. -->
+      <g>
+        <!-- mortarboard cap (carried back from Year 4) -->
+        <rect x="158" y="119" width="14" height="3" fill="#1c1c1c"/>
+        <rect x="158" y="122" width="13" height="6" fill="#2c2c2c"/>
+        <circle cx="172" cy="124" r="1" fill="#d4a542"/>
+        <rect x="171" y="125" width="1.5" height="5" fill="#d4a542"/>
+        <circle cx="171.5" cy="131" r="1.5" fill="#d4a542"/>
+        <!-- body in original blue/gray outfit -->
+        <rect x="161" y="125" width="8" height="6" fill="#2a1a10"/>
+        <rect x="161" y="131" width="8" height="8" fill="#f2d2bd"/>
+        <rect x="160" y="139" width="10" height="9" fill="#6e7e90"/>
+        <rect x="161" y="148" width="3" height="6" fill="#2a3848"/>
+        <rect x="166" y="148" width="3" height="6" fill="#2a3848"/>
+      </g>
+
+      <!-- Bottom-anchored sit-hint that appeared back in Year 4 -->
+      <text x="400" y="208" text-anchor="middle" fill="#ffd9a0" font-size="10" font-family="monospace" font-style="italic" opacity="0.75">go back through the hallways, if you like</text>
+
+      <!-- Scanlines -->
+      <g opacity="0.25">
+        <line x1="0" y1="20"  x2="800" y2="20"  stroke="#000"/>
+        <line x1="0" y1="40"  x2="800" y2="40"  stroke="#000"/>
+        <line x1="0" y1="60"  x2="800" y2="60"  stroke="#000"/>
+        <line x1="0" y1="80"  x2="800" y2="80"  stroke="#000"/>
+        <line x1="0" y1="100" x2="800" y2="100" stroke="#000"/>
+        <line x1="0" y1="120" x2="800" y2="120" stroke="#000"/>
+        <line x1="0" y1="140" x2="800" y2="140" stroke="#000"/>
+        <line x1="0" y1="160" x2="800" y2="160" stroke="#000"/>
+        <line x1="0" y1="180" x2="800" y2="180" stroke="#000"/>
+        <line x1="0" y1="200" x2="800" y2="200" stroke="#000"/>
+      </g>
+      <rect x="0" y="0" width="800" height="220" fill="none" stroke="#000" stroke-width="4"/>
+    </svg>
+
+    <div class="visual-notes" style="margin-top:8px;">
+      <strong>Trigger:</strong> The player picks <em>[Q] stay a little longer</em> at the Year 4 final doorway. A chair appears beside the windows. Sitting in it fills the hallway with warm light over ~20 seconds, and silently sets <code>epilogueMode = true</code>. After the sun has fully settled (~21s), a quiet italic line fades in at the bottom of the viewport: <em>"go back through the hallways, if you like."</em>
+    </div>
+
+    <div class="reflections">
+      <h4>The walk back</h4>
+      <div class="row"><span class="tag">FORWARD DOORWAYS</span><span class="body">Sealed in epilogue mode. The right-edge "step through" hint hides — the player has already passed that point.</span></div>
+      <div class="row"><span class="tag">BACK DOORWAYS</span><span class="body">A new threshold appears on the LEFT edge of Years 2/3/4 — same beam + frame geometry as the forward doorways, just facing the other way. Walking into it transitions back to the previous year.</span></div>
+      <div class="row"><span class="tag">ILLUMINATION</span><span class="body">Every hallway loads with the warm Year 4 sun layer over its own palette (Year 3 keeps its amber, Year 2 keeps its green, etc.). The colors stay; the light is the constant. Fast 1.5s fade-in so the room is bright by the time the player walks in.</span></div>
+      <div class="row"><span class="tag">MEMORIES</span><span class="body">Glows still visible with their permanent "·" marks. Pressing E next to one does nothing. The past is past — looking is allowed, re-deciding is not.</span></div>
+      <div class="row"><span class="tag">CAP</span><span class="body">The graduation cap (if worn or kept) rides back through every hallway. Visually the older self walks toward their first-year self wearing the original blue/gray outfit AND the cap they earned — the past and the journey together.</span></div>
+    </div>
+
+    <div class="reflections">
+      <h4>First-year self · "It's you!" · hug</h4>
+      <div class="row"><span class="tag">PAST-SELF</span><span class="body">Spawns at x=200 (the player's original spawn) in Year 1 in epilogue mode. Same composite sprite as the player, locked to the original Year 1 outfit. Soft footprint glow underneath; quiet "?" floating above. No radiating halo — the silhouette stands alone.</span></div>
+      <div class="row"><span class="tag">DIALOGUE</span><span class="body">Approach + [E] opens a single-choice conversation that bypasses the regular memory dialogue machine:
+<br>&nbsp;&nbsp;&nbsp;"It's you.
+<br>&nbsp;&nbsp;&nbsp;Smaller than you remembered.
+<br>&nbsp;&nbsp;&nbsp;Carrying everything you didn't know yet."
+<br>[E] →
+<br>&nbsp;&nbsp;&nbsp;"What do you do?
+<br>&nbsp;&nbsp;&nbsp;&gt; hug"
+<br>[E] → the hug.</span></div>
+      <div class="row"><span class="tag">HUG</span><span class="body">Both walk toward each other (~1.4s). The player tweens ~6px UPWARD as they approach so the older self stands visibly taller in the embrace — backing up "smaller than you remembered." The past-self leans into the older self (rotation 0.12) and HOLDS the lean for 4 seconds — the embrace is the still moment, not an animated one. No radiating glow.</span></div>
+      <div class="row"><span class="tag">WHISPER</span><span class="body">At t≈4.5s, the final line fades in over the embrace: <em>"you were always going to make it."</em> Holds for a few seconds while the lean unwinds.</span></div>
+      <div class="row"><span class="tag">CLOSING</span><span class="body">At t≈9s, the camera fades to black over 3.5s. All per-playthrough state resets, then <code>scene.start("TitleScene")</code>. The title screen returns. The game can be played again.</span></div>
+    </div>
+
+    <div class="visual-notes" style="margin-top:18px;">
+      <strong>One-time use, by design.</strong> The first-year self only exists in epilogue mode. A player who picks [E] continue at the final doorway never sees them. The chair, the walk back, the hug, the whisper — these are entirely earned by the <em>[Q] stay a little longer</em> choice. The game doesn't advertise them.
+    </div>
+    <div class="transition">"you were always going to make it." &nbsp;→&nbsp; title screen</div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
 <!-- Flowchart -->
 <!-- ============================================================ -->
 <section>
   <h2>System Flowchart</h2>
-  <div class="sub">Per-frame loop on top, dialogue state machine and memory model in the middle, multi-hallway flow at the bottom. Each year box also lists the world palette and the matching outfit re-tint applied to the player. The ENDING node is now two-stage: a per-year recap line drawn from each year's <code>doorwayReflections</code>, then a cumulative closing line drawn from Year 4's separate <code>finalReflections</code> bucket. The dashed gray arcs represent [Q] backtracking — the player can revise choices and re-trigger the doorway. The dashed white loop is the restart from the final ending back to Year 1.</div>
+  <div class="sub">Per-frame loop on top, dialogue state machine and memory model in the middle, multi-hallway flow next, then the EPILOGUE PATH (warm yellow) showing the [Q] "stay a little longer" branch — chair → walk back → first-year self → hug → fade to title. The TitleScene bubble sits above Year 1 and is the loop-back target for the epilogue. Each year box lists the world palette and the matching outfit re-tint. The ENDING node is two-stage: a per-year recap line drawn from each year's <code>doorwayReflections</code>, then a cumulative closing line drawn from Year 4's separate <code>finalReflections</code> bucket. Dashed gray arcs are [Q] backtracking; the dashed white arc is the [E] restart from the final doorway; the dashed warm arcs are the epilogue path and its loop-back to the title.</div>
 
   <div class="flowchart-wrap">
-    <svg viewBox="0 0 1100 900" preserveAspectRatio="xMidYMid meet" font-family="monospace">
+    <svg viewBox="0 0 1100 1100" preserveAspectRatio="xMidYMid meet" font-family="monospace">
       <defs>
         <marker id="sb-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
           <path d="M 0 0 L 10 5 L 0 10 z" fill="#dccfb0" />
@@ -994,9 +1229,12 @@ You learned your own weight.</span></div>
         <marker id="sb-arrowDim" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
           <path d="M 0 0 L 10 5 L 0 10 z" fill="#6e88c2" />
         </marker>
+        <marker id="sb-arrowWarm" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#ffd9a0" />
+        </marker>
       </defs>
 
-      <rect x="0" y="0" width="1100" height="900" fill="#0a0c12" />
+      <rect x="0" y="0" width="1100" height="1100" fill="#0a0c12" />
 
       <text x="550" y="38" text-anchor="middle" fill="#dccfb0" font-size="20" font-weight="bold" letter-spacing="2">STILL YOU — SYSTEM FLOWCHART</text>
       <text x="550" y="60" text-anchor="middle" fill="#888888" font-size="11">input → movement → collision → dialogue → choice → memory → doorway → ending</text>
@@ -1093,6 +1331,12 @@ You learned your own weight.</span></div>
       <text x="40" y="460" fill="#dccfb0" font-size="11" letter-spacing="2">MULTI-HALLWAY FLOW</text>
       <line x1="40" y1="468" x2="1060" y2="468" stroke="#3a3630" stroke-width="1" />
 
+      <!-- Title screen sits ABOVE the multi-hallway row. TitleScene hands
+           off to GameScene on [E]. -->
+      <rect x="40" y="478" width="200" height="14" rx="3" fill="#000000" stroke="#dccfb0" stroke-width="1"/>
+      <text x="140" y="489" text-anchor="middle" fill="#dccfb0" font-size="9" font-style="italic">TitleScene · "press E to begin"</text>
+      <line x1="140" y1="492" x2="140" y2="500" stroke="#dccfb0" stroke-width="1.5" marker-end="url(#sb-arrow)"/>
+
       <g>
         <rect x="40"  y="500" width="200" height="120" rx="4" fill="#0d111c" stroke="#6e88c2" stroke-width="2"/>
         <text x="140" y="523" text-anchor="middle" fill="#6e88c2" font-size="13" font-weight="bold">YEAR 1 — Arrival</text>
@@ -1155,33 +1399,90 @@ You learned your own weight.</span></div>
         <path d="M 740 620 Q 710 660 660 660 Q 610 660 600 622" fill="none" stroke="#888888" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#sb-arrow)" opacity="0.65" />
         <path d="M 960 620 Q 930 660 880 660 Q 840 660 830 622" fill="none" stroke="#888888" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#sb-arrow)" opacity="0.65" />
 
-        <path d="M 1000 620 Q 1000 760 540 760 Q 80 760 80 620" fill="none" stroke="#dccfb0" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#sb-arrow)" />
-        <text x="540" y="775" text-anchor="middle" fill="#dccfb0" font-size="10">[E] on the final doorway · play again, clean slate</text>
+        <path d="M 1000 620 Q 1000 700 540 700 Q 80 700 80 620" fill="none" stroke="#dccfb0" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#sb-arrow)" />
+        <text x="540" y="715" text-anchor="middle" fill="#dccfb0" font-size="10">[E] continue at the final doorway · play again, clean slate</text>
       </g>
 
-      <text x="40" y="810" fill="#dccfb0" font-size="11" letter-spacing="2">DOORWAY LIFECYCLE</text>
-      <line x1="40" y1="818" x2="1060" y2="818" stroke="#3a3630" stroke-width="1" />
+      <!-- Epilogue path ([Q] "stay a little longer" branch) -->
+      <text x="40" y="755" fill="#ffd9a0" font-size="11" letter-spacing="2">EPILOGUE PATH</text>
+      <text x="180" y="755" fill="#9a9384" font-size="10" font-style="italic">— [Q] "stay a little longer" at the final doorway</text>
+      <line x1="40" y1="762" x2="1060" y2="762" stroke="#4a3e2a" stroke-width="1" />
 
-      <text x="60"  y="844" fill="#aaaaaa" font-size="11">[1]</text>
-      <text x="90"  y="844" fill="#dccfb0" font-size="11">player enters doorway zone</text>
+      <g>
+        <rect x="40"  y="780" width="140" height="90" rx="4" fill="#1c1a14" stroke="#ffd9a0" stroke-width="1.5"/>
+        <text x="110" y="800" text-anchor="middle" fill="#ffd9a0" font-size="11" font-weight="bold">CHAIR</text>
+        <text x="110" y="818" text-anchor="middle" fill="#aaaaaa" font-size="9">Y4 only · [E] to sit</text>
+        <text x="110" y="834" text-anchor="middle" fill="#aaaaaa" font-size="9">~20s sun reveal</text>
+        <text x="110" y="850" text-anchor="middle" fill="#aaaaaa" font-size="9">epilogueMode = true</text>
+        <text x="110" y="864" text-anchor="middle" fill="#aaaaaa" font-size="8" font-style="italic">+21s: "go back" hint</text>
 
-      <text x="320" y="844" fill="#aaaaaa" font-size="11">[2]</text>
-      <text x="350" y="844" fill="#dccfb0" font-size="11">all memories handled? → overlay fades in</text>
+        <rect x="200" y="780" width="180" height="90" rx="4" fill="#1c1a14" stroke="#ffd9a0" stroke-width="1.5"/>
+        <text x="290" y="800" text-anchor="middle" fill="#ffd9a0" font-size="11" font-weight="bold">WALK BACK</text>
+        <text x="290" y="818" text-anchor="middle" fill="#aaaaaa" font-size="9">Y3 → Y2 → Y1 (illuminated)</text>
+        <text x="290" y="834" text-anchor="middle" fill="#aaaaaa" font-size="9">LEFT-edge back-doorway</text>
+        <text x="290" y="850" text-anchor="middle" fill="#aaaaaa" font-size="9">memories sealed · cap kept</text>
+        <text x="290" y="864" text-anchor="middle" fill="#aaaaaa" font-size="8" font-style="italic">forward doorways sealed</text>
 
-      <text x="60"  y="868" fill="#aaaaaa" font-size="11">[3a]</text>
-      <text x="90"  y="868" fill="#dccfb0" font-size="11">[E] continue → tween out → next hallway</text>
+        <rect x="400" y="780" width="180" height="90" rx="4" fill="#1c1a14" stroke="#ffd9a0" stroke-width="1.5"/>
+        <text x="490" y="800" text-anchor="middle" fill="#ffd9a0" font-size="11" font-weight="bold">FIRST-YEAR SELF</text>
+        <text x="490" y="818" text-anchor="middle" fill="#aaaaaa" font-size="9">spawns at x=200 in Y1</text>
+        <text x="490" y="834" text-anchor="middle" fill="#aaaaaa" font-size="9">original blue/gray outfit</text>
+        <text x="490" y="850" text-anchor="middle" fill="#aaaaaa" font-size="9">[E] → "It's you!" dialogue</text>
+        <text x="490" y="864" text-anchor="middle" fill="#aaaaaa" font-size="8" font-style="italic">single choice: hug</text>
 
-      <text x="330" y="868" fill="#aaaaaa" font-size="11">[3b]</text>
-      <text x="360" y="868" fill="#dccfb0" font-size="11">[Q] go back → tween out → player nudged back into hallway</text>
+        <rect x="600" y="780" width="160" height="90" rx="4" fill="#1c1a14" stroke="#ffd9a0" stroke-width="1.5"/>
+        <text x="680" y="800" text-anchor="middle" fill="#ffd9a0" font-size="11" font-weight="bold">HUG</text>
+        <text x="680" y="818" text-anchor="middle" fill="#aaaaaa" font-size="9">walk-in 1.4s, player rises ~6px</text>
+        <text x="680" y="834" text-anchor="middle" fill="#aaaaaa" font-size="9">lean + HOLD 4s</text>
+        <text x="680" y="850" text-anchor="middle" fill="#aaaaaa" font-size="9">whisper at t≈4.5s</text>
+        <text x="680" y="864" text-anchor="middle" fill="#aaaaaa" font-size="8" font-style="italic">"you were always going to make it."</text>
 
-      <text x="60"  y="888" fill="#aaaaaa" font-size="11">[4]</text>
-      <text x="90"  y="888" fill="#dccfb0" font-size="11">final year: [E] restarts the game (clears playerChoices, reloads Year 1). [Q] spawns in a chair, let the feelings soak in.</text>
+        <rect x="780" y="780" width="160" height="90" rx="4" fill="#000000" stroke="#ffd9a0" stroke-width="1.5"/>
+        <text x="860" y="800" text-anchor="middle" fill="#ffd9a0" font-size="11" font-weight="bold">FADE → TITLE</text>
+        <text x="860" y="818" text-anchor="middle" fill="#aaaaaa" font-size="9">3.5s slow fade-out</text>
+        <text x="860" y="834" text-anchor="middle" fill="#aaaaaa" font-size="9">resetForFreshPlaythrough()</text>
+        <text x="860" y="850" text-anchor="middle" fill="#aaaaaa" font-size="9">scene.start("TitleScene")</text>
+        <text x="860" y="864" text-anchor="middle" fill="#aaaaaa" font-size="8" font-style="italic">game can be played again</text>
+
+        <line x1="180" y1="825" x2="200" y2="825" stroke="#ffd9a0" stroke-width="2" marker-end="url(#sb-arrowWarm)"/>
+        <line x1="380" y1="825" x2="400" y2="825" stroke="#ffd9a0" stroke-width="2" marker-end="url(#sb-arrowWarm)"/>
+        <line x1="580" y1="825" x2="600" y2="825" stroke="#ffd9a0" stroke-width="2" marker-end="url(#sb-arrowWarm)"/>
+        <line x1="760" y1="825" x2="780" y2="825" stroke="#ffd9a0" stroke-width="2" marker-end="url(#sb-arrowWarm)"/>
+
+        <!-- Curve from ENDING into the epilogue path ([Q] branch) -->
+        <path d="M 1000 620 Q 1000 740 110 740 L 110 780" fill="none" stroke="#ffd9a0" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#sb-arrowWarm)" opacity="0.85"/>
+        <text x="600" y="734" text-anchor="middle" fill="#ffd9a0" font-size="9">[Q] stay a little longer · chair appears</text>
+
+        <!-- Loop from FADE→TITLE back up to the TitleScene bubble -->
+        <path d="M 940 780 Q 1040 780 1040 600 Q 1040 485 240 485" fill="none" stroke="#ffd9a0" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#sb-arrowWarm)" opacity="0.85"/>
+      </g>
+
+      <text x="40" y="930" fill="#dccfb0" font-size="11" letter-spacing="2">DOORWAY LIFECYCLE</text>
+      <line x1="40" y1="938" x2="1060" y2="938" stroke="#3a3630" stroke-width="1" />
+
+      <text x="60"  y="964" fill="#aaaaaa" font-size="11">[1]</text>
+      <text x="90"  y="964" fill="#dccfb0" font-size="11">player enters doorway zone (rectangular slab, not a point)</text>
+
+      <text x="540" y="964" fill="#aaaaaa" font-size="11">[2]</text>
+      <text x="570" y="964" fill="#dccfb0" font-size="11">all memories handled? → overlay fades in</text>
+
+      <text x="60"  y="988" fill="#aaaaaa" font-size="11">[3a]</text>
+      <text x="90"  y="988" fill="#dccfb0" font-size="11">[E] continue → tween out → next hallway (or restart on final year)</text>
+
+      <text x="60"  y="1012" fill="#aaaaaa" font-size="11">[3b]</text>
+      <text x="90"  y="1012" fill="#dccfb0" font-size="11">[Q] go back → tween out → player nudged back into hallway · revise choices</text>
+
+      <text x="60"  y="1036" fill="#aaaaaa" font-size="11">[3c]</text>
+      <text x="90"  y="1036" fill="#dccfb0" font-size="11">final year [Q] → "stay a little longer" → chair appears · enters EPILOGUE PATH above</text>
+
+      <text x="60"  y="1060" fill="#aaaaaa" font-size="11">[4]</text>
+      <text x="90"  y="1060" fill="#dccfb0" font-size="11">epilogueMode: forward doorway sealed, LEFT edge becomes back-doorway, memories show "·" only</text>
     </svg>
   </div>
 </section>
 
 <footer>
-  Still You · VIS 160A· Angelo Belardo
+  Still You · Angelo Belardo
 </footer>
 
 </body>
